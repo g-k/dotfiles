@@ -3,7 +3,7 @@ PROMPT='%~> '
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}:/opt/local/bin"
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:$HOME/Library/Haskell/bin:${PATH}:/opt/local/bin"
 set PATH
 
 # history
@@ -15,7 +15,7 @@ SAVEHIST=1000
 bindkey -e
 
 # settings
-setopt correct_all              # correct misspelled commands
+#setopt correct_all              # correct misspelled commands
 setopt autocd                   # cd by typing directory name
 setopt hist_ignore_dups         # ignore repeated commands
 
