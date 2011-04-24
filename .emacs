@@ -77,7 +77,7 @@
 (add-to-list 'ac-dictionary-directories "/Users/gregg/.emacs.d/ac-dict")
 (ac-config-default)
 ;; make selected option in autocomplete menu high contrast
-(set-face-background 'ac-selection-face "darkinvisbleyellow") ;; black/gray
+;; (set-face-background 'ac-selection-face "darkinvisbleyellow") ;; black/gray
 
 
 
@@ -124,3 +124,9 @@
             (local-set-key "\C-cpa" 'nosetests-pdb-all)
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
+
+
+(require 'puppet-mode)
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
