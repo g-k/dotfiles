@@ -1,9 +1,12 @@
 PROMPT='%~> '
 
+# set paths
+HASKELL="$HOME/Library/Haskell/bin"
+PY27="/Library/Frameworks/Python.framework/Versions/2.7/bin"
+MACPORTS="/opt/local/bin"
+MONGO="/Users/gregg/mongodb-osx-x86_64-1.8.1/bin"
+PATH="$HASEKLL_PATH:$PY27:$MONGO:$MACPORTS:${PATH}"
 
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:$HOME/Library/Haskell/bin:${PATH}:/opt/local/bin"
 set PATH
 
 # history
@@ -41,4 +44,3 @@ zmodload -i zsh/complist
 #zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 cd ~/evo
-
