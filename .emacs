@@ -14,9 +14,27 @@
 
 (add-to-list 'load-path "~/.emacs.d")
 
-;; Use org-mode for .org files
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;;
+(column-number-mode 1)
 
+;; Use org-mode for .org files
+(require 'org-install)
+
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+;; TODO Lists to search
+(setq org-agenda-files (list "~/org/Work.org"
+                             "~/org/Home.org"))
+
+;; Use puppet for *.pp files
+(require 'puppet-mode)
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+
+;; Use ruby-mode for Vagrantfiles
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
 ;; DISPLAY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -104,6 +122,7 @@
 ;; Use Python.org's python-mode.el for .py files
 (require 'python-mode)
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.py.erb$" . python-mode) auto-mode-alist))
 (setq interpreter-mode-alist (cons '("python" . python-mode)
 				   interpreter-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
@@ -124,9 +143,3 @@
             (local-set-key "\C-cpa" 'nosetests-pdb-all)
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
-
-
-(require 'puppet-mode)
-(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
-
-(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))

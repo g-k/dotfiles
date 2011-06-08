@@ -1,13 +1,16 @@
-PROMPT='%~> '
-
 # set paths
 HASKELL="$HOME/Library/Haskell/bin"
 PY27="/Library/Frameworks/Python.framework/Versions/2.7/bin"
 MACPORTS="/opt/local/bin"
-MONGO="/Users/gregg/mongodb-osx-x86_64-1.8.1/bin"
-PATH="$HASEKLL_PATH:$PY27:$MONGO:$MACPORTS:${PATH}"
+MONGO="$HOME/mongodb-osx-x86_64-1.8.1/bin"
 
+PATH="$HASKELL:$PY27:$MONGO:$MACPORTS:$PATH:$HOME/bin"
 set PATH
+
+# virtualenvwrapper
+WORKON_HOME=$HOME/envs
+set WORKON_HOME
+source virtualenvwrapper.sh
 
 # history
 HISTFILE=~/.zsh_history
@@ -18,7 +21,6 @@ SAVEHIST=1000
 bindkey -e
 
 # settings
-#setopt correct_all              # correct misspelled commands
 setopt autocd                   # cd by typing directory name
 setopt hist_ignore_dups         # ignore repeated commands
 
@@ -34,6 +36,8 @@ else
 fi
 alias grep='grep --color=auto'
 
+alias gs='git status'
+
 # tab completion
 autoload -U compinit promptinit
 compinit
@@ -43,4 +47,4 @@ zstyle ':completion:*' menu select list-colors ${(s.:.)LS_COLORS}
 zmodload -i zsh/complist
 #zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-cd ~/evo
+ulimit 40000
