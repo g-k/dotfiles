@@ -36,6 +36,8 @@ else
 fi
 alias grep='grep --color=auto'
 
+alias emacs='emacs -nw'
+
 alias gs='git status'
 
 # tab completion
