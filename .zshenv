@@ -1,10 +1,12 @@
 # set paths
 HASKELL="$HOME/Library/Haskell/bin"
+CABAL="$HOME/.cabal/bin"
 PY27="/Library/Frameworks/Python.framework/Versions/2.7/bin"
 MACPORTS="/opt/local/bin"
 MONGO="$HOME/mongodb-osx-x86_64-1.8.1/bin"
+RUBYGEMS="/var/lib/gems/1.8/bin"
 
-PATH="$HASKELL:$PY27:$MONGO:$MACPORTS:$PATH:$HOME/bin"
+PATH="$HASKELL:$PY27:$MONGO:$MACPORTS:$PATH:$HOME/bin:$RUBYGEMS:$CABAL"
 set PATH
 
 # virtualenvwrapper
@@ -25,7 +27,7 @@ setopt autocd                   # cd by typing directory name
 setopt hist_ignore_dups         # ignore repeated commands
 
 # programs
-export EDITOR=emacs                # default editor
+export EDITOR="emacs -nw"                # default editor
 
 # aliases
 if ls -F --color=auto >&/dev/null; then

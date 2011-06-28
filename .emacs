@@ -36,6 +36,10 @@
 ;; Use ruby-mode for Vagrantfiles
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
+;; Git
+(require 'git)
+(require 'git-blame)
+
 ;; DISPLAY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
