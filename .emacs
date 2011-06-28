@@ -14,6 +14,10 @@
 
 (add-to-list 'load-path "~/.emacs.d")
 
+(when (equal system-type 'darwin)
+  (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
+  (push "/opt/local/bin" exec-path))
+
 ;;
 (column-number-mode 1)
 
@@ -37,8 +41,9 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
 ;; Git
-(require 'git)
-(require 'git-blame)
+(when (equal system-type 'darwin)
+  (require 'git)
+  (require 'git-blame))
 
 ;; DISPLAY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
