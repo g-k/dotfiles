@@ -2,11 +2,11 @@
 HASKELL="$HOME/Library/Haskell/bin"
 CABAL="$HOME/.cabal/bin"
 PY27="/Library/Frameworks/Python.framework/Versions/2.7/bin"
-MACPORTS="/opt/local/bin"
+HOMEBREW="/usr/local/sbin:/usr/local/bin"
 MONGO="$HOME/mongodb-osx-x86_64-1.8.1/bin"
 RUBYGEMS="/var/lib/gems/1.8/bin"
 
-PATH="$HASKELL:$PY27:$MONGO:$MACPORTS:$PATH:$HOME/bin:$RUBYGEMS:$CABAL"
+PATH="$HASKELL:$PY27:$MONGO:$HOMEBREW:$PATH:$HOME/bin:$RUBYGEMS:$CABAL"
 set PATH
 
 # virtualenvwrapper
@@ -40,15 +40,19 @@ alias grep='grep --color=auto'
 
 alias emacs='emacs -nw'
 
-alias gs='git status'
 
 # tab completion
-autoload -U compinit promptinit
-compinit
+autoload -U compinit
 zstyle ':completion:*' menu select list-colors ${(s.:.)LS_COLORS}
 
 # colorful completion listings
 zmodload -i zsh/complist
 #zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-ulimit 40000
+unsetopt correct_all
+
+fpath=(~/.zsh/functions $fpath)
+
+if [[ `uname` = "Darwin" ]]; then
+    ulimit 40000
+fi

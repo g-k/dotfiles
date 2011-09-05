@@ -21,7 +21,7 @@ export ZSH_THEME="arrow"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github osx macports vagrant pip node npm)
+plugins=(git osx macports vagrant pip node npm fab gem)
 
 source $ZSH/oh-my-zsh.sh
 

@@ -40,10 +40,17 @@
 ;; Use ruby-mode for Vagrantfiles
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
-;; Git
+;; Use diff-mode for git commit messages
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
+
+;; Git installed with emacs on Ubuntu
 (when (equal system-type 'darwin)
   (require 'git)
   (require 'git-blame))
+
+;; Reset buffers if the files change on disk
+(global-auto-revert-mode t)
+
 
 ;; DISPLAY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -58,6 +65,10 @@
 (global-set-key (kbd "<f1>")  'buf-move-left)
 (global-set-key (kbd "<f2>")  'buf-move-right)
 
+;; Mark column 80
+;; (let ((whitespace-line-column 80)  ; 80 is the default
+;;       (whitespace-style '(lines))) ; or '(lines) for the whole line
+;;   (whitespace-mode 1))
 
 ;; BACKUP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -107,8 +118,6 @@
 ;; (set-face-background 'ac-selection-face "darkinvisbleyellow") ;; black/gray
 
 
-
-
 ;; C
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -124,10 +133,19 @@
                                    (statement-cont . +)))))
 (put 'downcase-region 'disabled nil)
 
+;; Coffeescript
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'load-path "~/.emacs.d/coffee-mode")
+(require 'coffee-mode)
+
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
 ;; Erlang
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Ubuntu
 (setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.6.3/emacs"
 		       load-path))
 (setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.6.4/emacs"
@@ -135,6 +153,14 @@
 (setq erlang-root-dir "/usr/local/lib/erlang")
 (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
 (require 'erlang-start)
+
+
+;; Haskell
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(load "~/.emacs.d/haskell-mode-2.8.0/haskell-site-file")
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 
 ;; Python
@@ -164,3 +190,4 @@
             (local-set-key "\C-cpa" 'nosetests-pdb-all)
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
+(put 'scroll-left 'disabled nil)
