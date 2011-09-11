@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+try:
+    import readline
+except ImportError:
+    # Silently ignore missing readline module
+    pass
+else:
+    import rlcompleter
+
+readline.parse_and_bind("tab: complete")

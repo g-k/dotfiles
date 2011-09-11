@@ -1,13 +1,17 @@
 # set paths
 HASKELL="$HOME/Library/Haskell/bin"
 CABAL="$HOME/.cabal/bin"
-PY27="/Library/Frameworks/Python.framework/Versions/2.7/bin"
 HOMEBREW="/usr/local/sbin:/usr/local/bin"
 MONGO="$HOME/mongodb-osx-x86_64-1.8.1/bin"
 RUBYGEMS="/var/lib/gems/1.8/bin"
 
-PATH="$HASKELL:$PY27:$MONGO:$HOMEBREW:$PATH:$HOME/bin:$RUBYGEMS:$CABAL"
+PATH="$HASKELL:$MONGO:$HOMEBREW:$PATH:$HOME/bin:$RUBYGEMS:$CABAL"
 set PATH
+
+PYTHONPATH="/Library/Python/2.6/site-packages:$PYTHONPATH"
+export PYTHONPATH
+
+export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # virtualenvwrapper
 WORKON_HOME=$HOME/envs
