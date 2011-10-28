@@ -40,6 +40,10 @@
 ;; Use ruby-mode for Vagrantfiles
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
+
+;; Use octave-mode for .m files (for ml class)
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+
 ;; Use diff-mode for git commit messages
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
 
