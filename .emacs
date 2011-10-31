@@ -83,10 +83,6 @@
 (global-set-key (kbd "<f1>")  'buf-move-left)
 (global-set-key (kbd "<f2>")  'buf-move-right)
 
-;; Mark column 80
-;; (let ((whitespace-line-column 80)  ; 80 is the default
-;;       (whitespace-style '(lines))) ; or '(lines) for the whole line
-;;   (whitespace-mode 1))
 
 ;; BACKUP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -128,7 +124,6 @@
 
 ;; AutoComplete.el
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path "/Users/gregg/.emacs.d")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "/Users/gregg/.emacs.d/ac-dict")
 (ac-config-default)
@@ -154,9 +149,7 @@
 ;; Coffeescript
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path "~/.emacs.d/coffee-mode")
 (require 'coffee-mode)
-
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
@@ -176,7 +169,7 @@
 ;; Haskell
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(load "~/.emacs.d/haskell-mode-2.8.0/haskell-site-file")
+(require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
