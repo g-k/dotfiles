@@ -42,7 +42,12 @@ else
 fi
 alias grep='grep --color=auto'
 
-alias emacs='emacs -nw'
+if [[ `uname` = "Linux" ]]; then
+    alias emacs='emacs-24.0.90 -nw'
+else
+    alias emacs='emacs -nw'
+fi
+
 
 
 # tab completion
