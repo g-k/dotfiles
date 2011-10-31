@@ -1,0 +1,39 @@
+  asciidoc           0.1          installed  asciidoc text file development support
+  auto-complete      1.4.20110207 installed  Auto-complete mode
+  auto-complete-e... 0.2          installed  Auto-complete etags
+  auto-complete-o... 0.1          installed  Auto-complete for Octave
+  buffer-move        0.4          installed  swap buffers between windows
+  coffee-mode        0.3.0        installed  Major mode to edit CoffeeScript files in Emacs
+  color-theme        6.6.1        installed  install color themes
+  color-theme-bla... 0.0.2        installed  Blackboard Colour Theme for Emacs.
+  crontab-mode       1.2          installed  Mode for editing crontab files
+  diff-git           0.1.1        installed  Git integration with diff-mode
+  ecb                2.40         installed  Emacs Code Browser
+  graphviz-dot-mode  0.3.7        installed  Mode for the dot-language used by graphviz (att).
+  haml-mode          3.0.14       installed  Major mode for editing Haml files
+  haskell-mode       2.8.0        installed  Haskell editing mode
+  highlight-80+      1.0          installed  highlight characters beyond column 80
+  ipython            2927         installed  Adds support for IPython to python-mode.el
+  js2-mode           20090814     installed  Improved JavaScript editing mode
+  lua-mode           20110428     installed  a major-mode for editing Lua scripts
+  markdown-mode      1.8.1        installed  Emacs Major mode for Markdown-formatted text files
+  mustache-mode      1.1          installed  a major mode for editing Google CTemplate files.
+  nose               0.1.1        installed  Easy Python test running in Emacs
+  pep8               1.2          installed  run the python pep8 checker putting hits in a grep buffer
+  pymacs             0.24         installed  Interface between Emacs Lisp and Python
+  python-mode        6.0.3        installed  Python major mode
+  python-pep8        1.1          installed  minor mode for running `pep8'
+  python-pylint      1.1          installed  minor mode for running `pylint'
+  rainbow-delimiters 1.3.21       installed  Highlight nested parens, brackets, braces a different color at each depth.
+  rainbow-mode       0.2          installed  Colorize color names in buffers
+  rspec-mode         0.2          installed  Enhance ruby-mode for RSpec
+  ruby-mode          1.1          installed  Major mode for editing Ruby files
+  sass-mode          3.0.14       installed  Major mode for editing Sass files
+  scala-mode         0.0.2        installed  Scala major mode
+  scss-mode          0.5.0        installed  Major mode for editing SCSS files
+  virtualenv         0.1          installed  Virtualenv for Python  -*- coding: utf-8 -*-
+  worklog            2.4.2        installed  time tracking mode
+  wtf                2.0          installed  Look up conversational and computing acronyms
+  yaml-mode          0.0.7        installed  Major mode for editing YAML files
+  yas-jit            0.5          installed  Loads Yasnippets on demand (makes start up faster)
+  yasnippet          0.6.1        installed  Yasnippet template engine

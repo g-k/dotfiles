@@ -1,3 +1,13 @@
+(require 'package)
+;; Add the original Emacs Lisp Package Archive
+(add-to-list 'package-archives
+             '("tromey" . "http://tromey.com/elpa/"))
+
+;; Add the user-contributed repository
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
