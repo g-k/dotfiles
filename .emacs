@@ -51,6 +51,11 @@
 (require 'puppet-mode)
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
+;; Markdown mode for .md and .markdown files
+(require 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+
 ;; Use ruby-mode for Vagrantfiles
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
