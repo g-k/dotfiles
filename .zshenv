@@ -42,8 +42,10 @@ fi
 alias grep='grep --color=auto'
 
 if [[ `uname` = "Linux" ]]; then
-    alias emacs='emacs-24.0.90 -nw'
+    # Install emacs 24 from ppa:cassou/emacs
+    alias emacs='emacs-snapshot -nw'
 else
+    # Install emacs 24 with: brew upgrade emacs --HEAD --use-git-head
     alias emacs='emacs -nw'
 fi
 
