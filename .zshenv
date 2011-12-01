@@ -12,10 +12,6 @@ export PYTHONPATH
 
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
-# virtualenvwrapper
-WORKON_HOME=$HOME/envs
-set WORKON_HOME
-source virtualenvwrapper.sh
 
 # history
 HISTFILE=~/.zsh_history
