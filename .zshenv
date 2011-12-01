@@ -1,17 +1,23 @@
-# set paths
-HASKELL="$HOME/Library/Haskell/bin"
+# set PATH
 CABAL="$HOME/.cabal/bin"
-HOMEBREW="/usr/local/sbin:/usr/local/bin"
 RUBYGEMS="/var/lib/gems/1.8/bin"
 
-PATH="$HASKELL:$HOMEBREW:$PATH:$HOME/bin:$RUBYGEMS:$CABAL"
-set PATH
+PATH="$PATH:$HOME/bin:$RUBYGEMS:$CABAL"
 
-PYTHONPATH="/Library/Python/2.6/site-packages:$PYTHONPATH"
+if [[ `uname` = "Darwin" ]]; then
+    HASKELL="$HOME/Library/Haskell/bin"
+    PATH="$HASKELL:$PATH"
+
+    HOMEBREW="/usr/local/bin:/usr/local/sbin"
+    PATH="$HOMEBREW:$PATH"
+
+    HOMEBREW_PYTHON="/usr/local/lib/python2.6/site-packages"
+    PYTHONPATH="$HOMEBREW_PYTHON:$PYTHONPATH:/Library/Python/2.6/site-packages"
+fi
+export PATH
+
 export PYTHONPATH
-
 export PYTHONSTARTUP="$HOME/.pythonrc"
-
 
 # history
 HISTFILE=~/.zsh_history
