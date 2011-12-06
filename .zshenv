@@ -8,11 +8,14 @@ if [[ `uname` = "Darwin" ]]; then
     HASKELL="$HOME/Library/Haskell/bin"
     PATH="$HASKELL:$PATH"
 
-    HOMEBREW="/usr/local/bin:/usr/local/sbin"
+    HOMEBREW="/usr/local/bin:/usr/local/sbin:/usr/local/lib"
     PATH="$HOMEBREW:$PATH"
 
     HOMEBREW_PYTHON="/usr/local/lib/python2.6/site-packages"
     PYTHONPATH="$HOMEBREW_PYTHON:$PYTHONPATH:/Library/Python/2.6/site-packages"
+
+    # Find node modules
+    export NODE_PATH=/usr/local/lib/node_modules/
 fi
 export PATH
 
