@@ -163,6 +163,24 @@
 (require 'auto-complete)
 (add-to-list 'ac-modes 'coffee-mode)
 
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2))
+
+(add-hook 'coffee-mode-hook
+  '(lambda() (coffee-custom)))
+
+
+;; Javascript
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun javascript-custom ()
+  "javascript-mode-hook"
+ (set (make-local-variable 'tab-width) 2))
+
+(add-hook 'javascript-mode-hook
+  '(lambda() (javascript-custom)))
+
 ;; Erlang
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
