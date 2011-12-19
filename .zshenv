@@ -22,6 +22,26 @@ export PATH
 export PYTHONPATH
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
+# Source node version manager
+if [[ -e ~/.nvm/nvm.sh ]]; then
+    source ~/.nvm/nvm.sh
+else
+    git clone git://github.com/creationix/nvm.git ~/.nvm
+    source ~/.nvm/nvm.sh
+fi
+
+# Source python virtualenvwrapper
+export WORKON_HOME=~/virtualenvs
+if [[ -d $WORKON_HOME ]]; then
+    mkdir -p $WORKON_HOME
+fi
+if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    sudo pip install -U virtualenvwrapper
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
 # history
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
