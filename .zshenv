@@ -14,8 +14,6 @@ if [[ `uname` = "Darwin" ]]; then
     HOMEBREW_PYTHON="/usr/local/lib/python2.6/site-packages"
     PYTHONPATH="$HOMEBREW_PYTHON:$PYTHONPATH:/Library/Python/2.6/site-packages"
 
-    # Find node modules
-    export NODE_PATH=/usr/local/lib/node_modules/
 fi
 export PATH
 
