@@ -49,7 +49,6 @@ SAVEHIST=1000
 
 # zsh settings
 bindkey -e                      # Use emacs keybindings (-v for vi)
-setopt autocd                   # cd by typing directory name
 setopt hist_ignore_dups         # ignore repeated commands
 
 # programs
