@@ -33,6 +33,8 @@
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
   (push "/opt/local/bin" exec-path))
 
+;; Highlight the current line (so I can find it on a big monitor w/ many buffers)
+(global-hl-line-mode t)
 ;;
 (column-number-mode 1)
 
