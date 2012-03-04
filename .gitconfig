@@ -10,3 +10,5 @@
 	diff = auto
 	status = auto
 	branch = auto
+[core]
+	editor = /usr/local/bin/emacs --debug-init
