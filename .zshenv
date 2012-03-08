@@ -62,6 +62,7 @@ else
   alias ls="ls -F"
 fi
 alias grep='grep --color=auto'
+alias gst="git status"
 
 if [[ `uname` = "Linux" ]]; then
     # Install emacs 24 from ppa:cassou/emacs
