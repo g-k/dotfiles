@@ -83,8 +83,3 @@ zmodload -i zsh/complist
 
 unsetopt correct_all
 
-fpath=(~/.zsh/functions $fpath)
-
-if [[ `uname` = "Darwin" ]]; then
-    ulimit 40000
-fi
