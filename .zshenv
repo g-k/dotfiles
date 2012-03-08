@@ -28,7 +28,7 @@ else
     source ~/.nvm/nvm.sh
 fi
 
-source .nodey.zsh # nodey-tools zsh completion
+source ~/.nodey.zsh # nodey-tools zsh completion
 
 # Source python virtualenvwrapper
 export WORKON_HOME=~/virtualenvs
