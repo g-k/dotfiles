@@ -162,7 +162,7 @@
 (add-to-list 'auto-mode-alist '("\\.cson$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 ;; compile on save
-(add-hook 'coffee-mode-hook '(lambda () (coffee-cos-mode t)))
+;; (add-hook 'coffee-mode-hook '(lambda () (coffee-cos-mode t)))
 (require 'auto-complete)
 (add-to-list 'ac-modes 'coffee-mode)
 
