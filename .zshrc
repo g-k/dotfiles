@@ -32,3 +32,4 @@ zstyle ':omz:prompt' theme 'minimal'
 source "$HOME/.oh-my-zsh/init.zsh"
 
 # Customize to your needs...
+source ~/.zshenv
