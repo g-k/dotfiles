@@ -54,6 +54,7 @@ export EDITOR="emacs -nw"                # default editor
 
 # aliases
 alias gst="git status"
+alias rm="nocorrect rm"
 
 if [[ `uname` = "Linux" ]]; then
     # Install emacs 24 from ppa:cassou/emacs
