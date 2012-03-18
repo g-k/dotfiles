@@ -53,13 +53,6 @@ setopt hist_ignore_dups         # ignore repeated commands
 export EDITOR="emacs -nw"                # default editor
 
 # aliases
-if ls -F --color=auto >&/dev/null; then
-  eval `dircolors -b`
-  alias ls="ls --color=auto -F"
-else
-  alias ls="ls -F"
-fi
-alias grep='grep --color=auto'
 alias gst="git status"
 
 if [[ `uname` = "Linux" ]]; then
