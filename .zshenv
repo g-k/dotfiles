@@ -63,15 +63,4 @@ else
     alias emacs='emacs -nw'
 fi
 
-
-
-# tab completion
-autoload -U compinit
-zstyle ':completion:*' menu select list-colors ${(s.:.)LS_COLORS}
-
-# colorful completion listings
-zmodload -i zsh/complist
-#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
 unsetopt correct_all
-
