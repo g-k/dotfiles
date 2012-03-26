@@ -12,3 +12,5 @@
 	branch = auto
 [core]
 	editor = /usr/local/bin/emacs --debug-init
+[push]
+	default = current
