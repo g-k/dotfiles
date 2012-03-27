@@ -54,6 +54,9 @@
 (require 'puppet-mode)
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
+;; Use html for *.gui files
+(add-to-list 'auto-mode-alist '("\\.gui$" . html-mode))
+
 ;; Markdown mode for .md and .markdown files
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
