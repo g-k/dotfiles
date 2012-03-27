@@ -31,6 +31,8 @@
 
 (require 'cython-mode)
 
+;; Sample custom hook
+;; (add-hook 'coffee-mode-hook '(lambda () (shell-command "echo 'hi'")))
 
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
