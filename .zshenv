@@ -20,9 +20,7 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # Source node version manager
 if [[ -e ~/.nvm/nvm.sh ]]; then
-    source ~/.nvm/nvm.sh
-else
-    git clone git://github.com/creationix/nvm.git ~/.nvm
+    # git clone git://github.com/creationix/nvm.git ~/.nvm
     source ~/.nvm/nvm.sh
 fi
 
