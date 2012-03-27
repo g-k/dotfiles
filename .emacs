@@ -25,6 +25,9 @@
   ;; If there is more than one, they won't work right.
  )
 
+;; Use delete to delete char to left and not current cursor char
+(when (equal system-type 'darwin)
+  (normal-erase-is-backspace-mode 0))
 
 (require 'cython-mode)
 
