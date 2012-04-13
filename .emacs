@@ -59,6 +59,12 @@
 (require 'puppet-mode)
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
+
+;; Use mustache mode for handlebars templates
+(add-to-list 'load-path "~/.emacs.d/mustache-mode.el")
+(require 'mustache-mode)
+(add-to-list 'auto-mode-alist '("\\.handlebars$" . mustache-mode))
+
 ;; Use html for *.gui files
 (add-to-list 'auto-mode-alist '("\\.gui$" . html-mode))
 
