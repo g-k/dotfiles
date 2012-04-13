@@ -10,12 +10,9 @@ if [[ `uname` = "Darwin" ]]; then
 
     HOMEBREW="/usr/local/bin:/usr/local/sbin:/usr/local/lib:/usr/local/share/python"
     export PATH="$HOMEBREW:$PATH"
-
-    PYTHONPATH="$PYTHONPATH:/Library/Python/2.6/site-packages"
 fi
 export PATH
 
-export PYTHONPATH
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # Source node version manager
