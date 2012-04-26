@@ -45,4 +45,3 @@ zstyle ':omz:module:prompt' theme 'minimal'
 source "$OMZ/init.zsh"
 
 # Customize to your needs...
-source ~/.zshenv
