@@ -1,8 +1,7 @@
 # set PATH
 CABAL="$HOME/.cabal/bin"
-RUBYGEMS="/var/lib/gems/1.8/bin"
 
-PATH="$PATH:$HOME/bin:$RUBYGEMS:$CABAL"
+PATH="$PATH:$HOME/bin:$CABAL"
 
 if [[ `uname` = "Darwin" ]]; then
     HASKELL="$HOME/Library/Haskell/bin"
@@ -64,3 +63,5 @@ else
 fi
 
 unsetopt correct_all
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
