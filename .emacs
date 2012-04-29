@@ -25,6 +25,12 @@
   ;; If there is more than one, they won't work right.
  )
 
+;; Use unique buffer names based on file directory
+;; http://stackoverflow.com/questions/2903426/display-path-of-file-in-status-bar
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+
+
 ;; Use delete to delete char to left and not current cursor char
 (when (equal system-type 'darwin)
   (normal-erase-is-backspace-mode 0))
