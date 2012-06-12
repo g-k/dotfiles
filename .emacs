@@ -188,7 +188,9 @@
 
 (defun coffee-custom ()
   "coffee-mode-hook"
- (set (make-local-variable 'tab-width) 2))
+  (set (make-local-variable 'tab-width) 2)
+  (define-key coffee-mode-map (kbd "C-c c") 'coffee-compile-buffer)
+  )
 
 (add-hook 'coffee-mode-hook
   '(lambda() (coffee-custom)))
