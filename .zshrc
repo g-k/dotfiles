@@ -31,7 +31,7 @@ zstyle ':omz:load' zfunction 'zargs' 'zmv'
 
 # Set the Oh My Zsh modules to load (browse modules).
 zstyle ':omz:load' omodule 'environment' 'terminal' 'editor' \
-'completion' 'history' 'directory' 'spectrum' 'alias' 'utility' \
+'completion' 'history' 'directory' 'spectrum' 'utility' \
 'prompt' 'archive' 'git' 'osx' 'python' 'rsync' 'tmux' 'dpkg' \
 'gpg-agent' 'node' 'history-substring-search' 'gnu-utility'
 
