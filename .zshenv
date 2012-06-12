@@ -29,8 +29,6 @@ if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
     # pip install -U virtualenvwrapper
     source /usr/local/bin/virtualenvwrapper.sh
 fi
-# resty for REST requests
-source .resty-src
 
 # history
 HISTFILE=~/.zsh_history
