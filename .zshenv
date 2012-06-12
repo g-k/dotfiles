@@ -25,14 +25,8 @@ source ~/.nodey.zsh # nodey-tools
 source ~/.npm.zsh   # npm
 
 # Source python virtualenvwrapper
-export WORKON_HOME=~/virtualenvs
-if [[ -d $WORKON_HOME ]]; then
-    mkdir -p $WORKON_HOME
-fi
 if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-else
-    sudo pip install -U virtualenvwrapper
+    # pip install -U virtualenvwrapper
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 # resty for REST requests
