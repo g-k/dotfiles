@@ -45,6 +45,13 @@
 ;; Sample custom hook
 ;; (add-hook 'coffee-mode-hook '(lambda () (shell-command "echo 'hi'")))
 
+;; Automatically recompile elisp files
+(add-hook 'emacs-lisp-mode-hook
+	  (lambda nil
+	    (add-hook 'after-save-hook
+		      (lambda nil (save-excursion (byte-compile-file buffer-file-name)))
+		      nil 'local))) ; Only in current buffer
+
 
 ;; Highlight the current line (so I can find it on a big monitor w/ many buffers)
 (global-hl-line-mode t)
