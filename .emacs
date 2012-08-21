@@ -203,8 +203,11 @@
   "javascript-mode-hook"
  (set (make-local-variable 'tab-width) 2))
 
-(add-hook 'javascript-mode-hook
-  '(lambda() (javascript-custom)))
+;; M-x customize-group RET js2-mode RET
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+
 
 ;; Erlang
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
