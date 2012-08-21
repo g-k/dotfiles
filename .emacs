@@ -43,7 +43,12 @@
 (require 'cython-mode)
 
 ;; Sample custom hook
-;; (add-hook 'coffee-mode-hook '(lambda () (shell-command "echo 'hi'")))
+; https://groups.google.com/forum/?fromgroups#!topic/gnu.emacs.help/80FwoaEzqwI%5B1-25%5D
+;; (add-hook 'coffee-mode-hook
+;; 	  (lambda nil
+;; 	    (add-hook 'after-save-hook
+;; 		      (lambda nil (shell-command "npm run-script build-browser && osascript ~/Dropbox/bin/reload-chrome.applescript 'Binary Heap'"))
+;; 		      nil 'local))) ; Only in current buffer
 
 ;; Automatically recompile elisp files
 (add-hook 'emacs-lisp-mode-hook
