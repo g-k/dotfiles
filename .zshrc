@@ -57,4 +57,4 @@ zstyle ':omz:module:prompt' theme 'minimal'
 source "$OMZ/init.zsh"
 
 # Customize to your needs...
-source .my-zshrc.zsh
+source .my-zshrc.sh

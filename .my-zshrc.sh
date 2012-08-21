@@ -17,7 +17,7 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 # Source node version manager
 if [[ -e ~/.nvm/nvm.sh ]]; then
     # git clone git://github.com/creationix/nvm.git ~/.nvm
-    source ~/.nvm/nvm.sh
+    # source ~/.nvm/nvm.sh
 fi
 
 # zsh completions
@@ -52,6 +52,7 @@ else
     # Install emacs 24 with: brew upgrade emacs --HEAD --use-git-head
     alias emacs='emacs -nw'
 fi
-alias emacsd="/usr/local/bin/emacs --daemon"
+alias emacsd="emacs --daemon"
+alias emacsc="emacsclient -t"
 
 unsetopt correct_all
