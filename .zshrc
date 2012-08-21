@@ -5,9 +5,6 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-# Set the path to Oh My Zsh.
-export OMZ="$HOME/.oh-my-zsh"
-
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':omz:module:editor' keymap 'emacs'
 
@@ -30,11 +27,26 @@ zstyle ':omz:load' zmodule 'attr' 'stat'
 zstyle ':omz:load' zfunction 'zargs' 'zmv'
 
 # Set the Oh My Zsh modules to load (browse modules).
-zstyle ':omz:load' omodule 'environment' 'terminal' 'editor' \
-'completion' 'history' 'directory' 'spectrum' 'utility' \
-'prompt' 'archive' 'git' 'osx' 'python' 'rsync' 'tmux' 'dpkg' \
-'gpg-agent' 'node' 'history-substring-search' 'gnu-utility'
-
+# The order matters.
+zstyle ':omz:load' omodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'prompt' \
+  'archive' \
+  'osx' \
+  'python' \
+  'rsync' \
+  'tmux' \
+  'dpkg' \
+  'gpg-agent' \
+  'node' \
+  'history-substring-search'
 
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
@@ -45,3 +57,4 @@ zstyle ':omz:module:prompt' theme 'minimal'
 source "$OMZ/init.zsh"
 
 # Customize to your needs...
+source .my-zshrc.zsh

@@ -1,56 +1,91 @@
-# set PATH
-CABAL="$HOME/.cabal/bin"
+#
+# Defines environment variables.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
-PATH="$PATH:$HOME/bin:$CABAL"
+# Set the path to Oh My Zsh.
+export OMZ="$HOME/.oh-my-zsh"
 
-if [[ `uname` = "Darwin" ]]; then
-    HASKELL="$HOME/Library/Haskell/bin"
-    PATH="$HASKELL:$PATH"
+#
+# Paths
+#
 
-    HOMEBREW="/usr/local/bin:/usr/local/sbin:/usr/local/lib:/usr/local/share/python"
-    export PATH="$HOMEBREW:$PATH"
+typeset -gU cdpath fpath mailpath manpath path
+typeset -gUT INFOPATH infopath
+
+# Set the the list of directories that cd searches.
+# cdpath=(
+#   $cdpath
+# )
+
+# Set the list of directories that info searches for manuals.
+infopath=(
+  /usr/local/share/info
+  /usr/share/info
+  $infopath
+)
+
+# Set the list of directories that man searches for manuals.
+manpath=(
+  /usr/local/share/man
+  /usr/share/man
+  $manpath
+)
+
+for path_file in /etc/manpaths.d/*(.N); do
+  manpath+=($(<$path_file))
+done
+unset path_file
+
+# Set the list of directories that Zsh searches for programs.
+path=(
+  /usr/local/{bin,sbin}
+  /usr/{bin,sbin}
+  /{bin,sbin}
+  $path
+)
+
+for path_file in /etc/paths.d/*(.N); do
+  path+=($(<$path_file))
+done
+unset path_file
+
+#
+# Language
+#
+
+if [[ -z "$LANG" ]]; then
+  eval "$(locale)"
 fi
-export PATH
 
-export PYTHONSTARTUP="$HOME/.pythonrc"
+#
+# Editors
+#
 
-# Source node version manager
-if [[ -e ~/.nvm/nvm.sh ]]; then
-    # git clone git://github.com/creationix/nvm.git ~/.nvm
-    source ~/.nvm/nvm.sh
+export EDITOR='nano'
+export VISUAL='nano'
+export PAGER='less'
+
+#
+# Browser
+#
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
 fi
 
-# zsh completions
-source ~/.nodey.zsh # nodey-tools
-source ~/.npm.zsh   # npm
+#
+# Less
+#
 
-# Source python virtualenvwrapper
-if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
-    # pip install -U virtualenvwrapper
-    source /usr/local/bin/virtualenvwrapper.sh
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+
+# Set the Less input preprocessor.
+if (( $+commands[lesspipe.sh] )); then
+  export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
 fi
-
-# history
-HISTFILE=~/.zsh_history
-HISTSIZE=5000
-SAVEHIST=1000
-
-# zsh settings
-setopt hist_ignore_dups         # ignore repeated commands
-
-# programs
-export EDITOR="emacs -nw"                # default editor
-
-# aliases
-alias gst="git status"
-alias rm="nocorrect rm"
-
-if [[ `uname` = "Linux" ]]; then
-    # Install emacs 24 from ppa:cassou/emacs
-    alias emacs='emacs-snapshot -nw'
-else
-    # Install emacs 24 with: brew upgrade emacs --HEAD --use-git-head
-    alias emacs='emacs -nw'
-fi
-
-unsetopt correct_all
