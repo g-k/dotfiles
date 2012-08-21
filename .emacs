@@ -32,6 +32,9 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
 
+;; Use yasnippet everywhere
+(require 'yasnippet)
+(yas/global-mode 1)
 
 ;; Use delete to delete char to left and not current cursor char
 (when (equal system-type 'darwin)
