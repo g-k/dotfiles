@@ -49,6 +49,22 @@
 ;;
 (column-number-mode 1)
 
+;; OSX copy paste
+;; from: http://www.lingotrek.com/2010/12/integrate-emacs-with-mac-os-x-clipboard.html
+(defun mac-copy ()
+  (shell-command-to-string "pbpaste"))
+
+(defun mac-paste (text &optional push)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
+
+(when (equal system-type 'darwin)
+  (setq interprogram-cut-function 'mac-paste)
+  (setq interprogram-paste-function 'mac-copy))
+
+
 ;; Use org-mode for .org files
 (require 'org-install)
 
