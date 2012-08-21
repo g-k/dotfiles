@@ -53,6 +53,5 @@ else
     alias emacs='emacs -nw'
 fi
 alias emacsd="/usr/local/bin/emacs --daemon"
-alias emacs="emacsclient -t"
 
 unsetopt correct_all
