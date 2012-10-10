@@ -286,3 +286,14 @@
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
 (put 'scroll-left 'disabled nil)
+
+
+;; Smalltalk
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq auto-mode-alist
+      (append  '(("\\.st\\'" . smalltalk-mode))
+	       auto-mode-alist))
+
+(autoload 'gst-mode "/usr/local/Cellar/gnu-smalltalk/HEAD/share/emacs/site-lisp/gst-mode.elc" "" t)
+(autoload 'smalltalk-mode "/usr/local/Cellar/gnu-smalltalk/HEAD/share/emacs/site-lisp/smalltalk-mode.elc" "" t)
