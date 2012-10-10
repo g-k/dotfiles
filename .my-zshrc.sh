@@ -32,8 +32,6 @@ fi
 
 # history
 HISTFILE=~/.zsh_history
-HISTSIZE=5000
-SAVEHIST=1000
 
 # zsh settings
 setopt hist_ignore_dups         # ignore repeated commands
