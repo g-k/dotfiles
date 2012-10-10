@@ -56,3 +56,19 @@ alias emacsd="emacs --daemon"
 alias emacsc="emacsclient -t"
 
 unsetopt correct_all
+
+## Functions: from @webcoyote
+
+# URL encode something and print it.
+function url-encode; {
+  setopt extendedglob
+  echo "${${(j: :)@}//(#b)(?)/%$[[##16]##${match[1]}]}"
+}
+
+# Search google
+function google; {
+  python -m webbrowser -t "http://www.google.com/search?q=$(url-encode ${(j: :)@})"
+}
+
+# Make directory and change to it
+mdc() { mkdir -p "$1" && cd "$1" }
