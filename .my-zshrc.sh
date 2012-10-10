@@ -38,6 +38,7 @@ setopt hist_ignore_dups         # ignore repeated commands
 
 # programs
 export EDITOR="emacs -nw"                # default editor
+export SVN_EDITOR=$EDITOR
 
 # aliases
 alias gst="git status"
