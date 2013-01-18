@@ -149,7 +149,7 @@
 (setq backup-directory-alist
           `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
-          `((".*" ,temporary-file-directory t)))
+          `((".*" . ,temporary-file-directory)))
 
 ;; Remember my windows, buffers, etc.
 ;; (desktop-save-mode 1)
