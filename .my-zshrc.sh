@@ -14,12 +14,6 @@ export PATH
 
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
-# Source node version manager
-if [[ -e ~/.nvm/nvm.sh ]]; then
-    # git clone git://github.com/creationix/nvm.git ~/.nvm
-    # source ~/.nvm/nvm.sh
-fi
-
 # zsh completions
 source ~/.nodey.zsh # nodey-tools
 source ~/.npm.zsh   # npm
