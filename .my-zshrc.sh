@@ -23,6 +23,7 @@ HISTFILE=~/.zsh_history
 
 # zsh settings
 setopt hist_ignore_dups         # ignore repeated commands
+unsetopt correct_all
 
 # programs
 export EDITOR="emacs -nw"                # default editor
@@ -35,7 +36,6 @@ alias rm="nocorrect rm"
 alias emacsd="emacs --daemon"
 alias emacsc="emacsclient -t"
 
-unsetopt correct_all
 
 ## Functions: from @webcoyote
 
