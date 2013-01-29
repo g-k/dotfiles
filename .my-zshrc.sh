@@ -32,13 +32,6 @@ export SVN_EDITOR=$EDITOR
 alias gst="git status"
 alias rm="nocorrect rm"
 
-if [[ `uname` = "Linux" ]]; then
-    # Install emacs 24 from ppa:cassou/emacs
-    alias emacs='emacs-snapshot -nw'
-else
-    # Install emacs 24 with: brew install emacs --srgb --cocoa
-    alias emacs='emacs -nw'
-fi
 alias emacsd="emacs --daemon"
 alias emacsc="emacsclient -t"
 
