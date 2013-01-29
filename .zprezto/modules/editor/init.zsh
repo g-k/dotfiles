@@ -141,8 +141,25 @@ function editor-info {
 }
 zle -N editor-info
 
-# Updates editor information when the keymap changes.
+# Ensures that $terminfo values are valid and updates editor information when
+# the keymap changes.
 function zle-keymap-select zle-line-init zle-line-finish {
+  # The terminal must be in application mode when ZLE is active for $terminfo
+  # values to be valid.
+  if (( $+terminfo[smkx] && $+terminfo[rmkx] )); then
+    case "$0" in
+      (zle-line-init)
+        # Enable terminal application mode.
+        echoti smkx
+      ;;
+      (zle-line-finish)
+        # Disable terminal application mode.
+        echoti rmkx
+      ;;
+    esac
+  fi
+
+  # Update editor information.
   zle editor-info
 }
 zle -N zle-keymap-select
@@ -252,10 +269,6 @@ bindkey -M vicmd "v" edit-command-line
 # Undo/Redo
 bindkey -M vicmd "u" undo
 bindkey -M vicmd "$key_info[Control]R" redo
-
-# Switch to command mode.
-bindkey -M viins "jk" vi-cmd-mode
-bindkey -M viins "kj" vi-cmd-mode
 
 if (( $+widgets[history-incremental-pattern-search-backward] )); then
   bindkey -M vicmd "?" history-incremental-pattern-search-backward

@@ -53,9 +53,10 @@ Aliases
   - `gca` stages all modified and deleted files.
   - `gcm` records changes to the repository with the given message.
   - `gco` checks out a branch or paths to work tree.
-  - `gcO` checks out paths to work tree using the *HEAD* commit.
+  - `gcO` checks out hunks from the index or the tree interactively.
   - `gcf` amends the tip of the current branch using the same log message as
     *HEAD*.
+  - `gcF` amends the tip of the current branch.
   - `gcp` applies changes introduced by existing commits.
   - `gcP` applies changes introduced by existing commits without committing.
   - `gcr` reverts existing commits by reverting patches and recording new
@@ -97,8 +98,8 @@ Aliases
   - `giu` adds file contents to the index (updates only known files).
   - `gid` displays changes between the index and a named commit (diff).
   - `giD` displays changes between the index and a named commit (word diff).
-  - `gir` resets current HEAD to the specified state.
-  - `giR` resets current index to the specified state.
+  - `gir` resets the current HEAD to the specified state.
+  - `giR` resets the current index interactively.
   - `gix` removes files/directories from the index (recursively).
   - `giX` removes files/directories from the index (recursively and forced).
 
@@ -292,7 +293,7 @@ Second, format how the above attributes are displayed in prompts.
       'prompt'  ' git(%b)' \
       'rprompt' '[%R]'
 
-Last, add `$git_info[prompt]` to `$PROMPT` and `$git_info[prompt]` to
+Last, add `$git_info[prompt]` to `$PROMPT` and `$git_info[rprompt]` to
 `$RPROMPT` respectively and call `git-info` in the `prompt_name_preexec` hook
 function.
 
