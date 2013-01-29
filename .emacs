@@ -217,9 +217,7 @@
   (define-key coffee-mode-map (kbd "C-c c") 'coffee-compile-buffer)
   )
 
-(add-hook 'coffee-mode-hook
-  '(lambda() (coffee-custom)))
-
+(add-hook 'coffee-mode-hook 'coffee-custom)
 
 ;; Javascript
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
