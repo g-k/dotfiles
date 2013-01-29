@@ -19,6 +19,9 @@
 (require 'yasnippet)
 (yas/global-mode 1)
 
+;; Use ido-mode everywhere (find files and dirs)
+(ido-mode 1)
+
 ;; Use delete to delete char to left and not current cursor char
 (when (equal system-type 'darwin)
   (normal-erase-is-backspace-mode 0))
