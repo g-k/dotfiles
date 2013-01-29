@@ -10,25 +10,6 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(js2-basic-offset 2)
- '(js2-bounce-indent-p t)
- '(show-paren-mode t))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
-
-;; Hide the menubar
-(menu-bar-mode -1)
-
 ;; Use unique buffer names based on file directory
 ;; http://stackoverflow.com/questions/2903426/display-path-of-file-in-status-bar
 (require 'uniquify)
@@ -59,6 +40,13 @@
 		      (lambda nil (save-excursion (byte-compile-file buffer-file-name)))
 		      nil 'local))) ; Only in current buffer
 
+(setq inhibit-splash-screen t)  ;; Hide the startup screen
+(menu-bar-mode -1)  ;; Hide the menubar
+(show-paren-mode 1)  ;; highlight matching parens
+(eldoc-mode 1) ;; Show elisp help docs
+;; ;; Look into paredit-mode for writing elisp
+;; (define-key emacs-lisp-mode-map
+;;   (kbd "M-.") 'find-function-at-point)
 
 ;; Highlight the current line (so I can find it on a big monitor w/ many buffers)
 (global-hl-line-mode t)
@@ -147,15 +135,16 @@
 ;; BACKUP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Keep ~ and # backup and recovery files in one place
-(setq backup-directory-alist
-          `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-          `((".*" . ,temporary-file-directory)))
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+(setq auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
+(setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+
+;; create the autosave and backup dirs if necessary, since emacs won't.
+(make-directory "~/.emacs.d/autosaves/" t)
+(make-directory "~/.emacs.d/backups/" t)
 
 ;; Remember my windows, buffers, etc.
 ;; (desktop-save-mode 1)
-
 
 ;; WHITESPACE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -234,6 +223,9 @@
 (defun javascript-custom ()
   "javascript-mode-hook"
  (set (make-local-variable 'tab-width) 2))
+
+(setq js2-basic-offset 2)
+(setq js2-bounce-indent-p t)
 
 ;; M-x customize-group RET js2-mode RET
 (autoload 'js2-mode "js2-mode" nil t)
