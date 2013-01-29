@@ -27,7 +27,7 @@
   (normal-erase-is-backspace-mode 0))
 
 ;; Sample custom hook
-; https://groups.google.com/forum/?fromgroups#!topic/gnu.emacs.help/80FwoaEzqwI%5B1-25%5D
+;; https://groups.google.com/forum/?fromgroups#!topic/gnu.emacs.help/80FwoaEzqwI%5B1-25%5D
 ;; (add-hook 'coffee-mode-hook
 ;; 	  (lambda nil
 ;; 	    (add-hook 'after-save-hook
