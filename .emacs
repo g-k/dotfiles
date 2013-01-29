@@ -35,11 +35,13 @@
 ;; 		      nil 'local))) ; Only in current buffer
 
 ;; Automatically recompile elisp files
-(add-hook 'emacs-lisp-mode-hook
-	  (lambda nil
-	    (add-hook 'after-save-hook
-		      (lambda nil (save-excursion (byte-compile-file buffer-file-name)))
-		      nil 'local))) ; Only in current buffer
+;; TODO name hook so I can remove it
+;; (add-hook 'emacs-lisp-mode-hook
+;; 	  (lambda nil
+;; 	    (add-hook 'after-save-hook
+;; 		      (lambda nil (save-excursion (byte-compile-file buffer-file-name)))
+;; 		      nil 'local))) ; Only in current buffer
+
 
 (setq inhibit-splash-screen t)  ;; Hide the startup screen
 (menu-bar-mode -1)  ;; Hide the menubar
