@@ -36,7 +36,7 @@ if [[ `uname` = "Linux" ]]; then
     # Install emacs 24 from ppa:cassou/emacs
     alias emacs='emacs-snapshot -nw'
 else
-    # Install emacs 24 with: brew upgrade emacs --HEAD --use-git-head
+    # Install emacs 24 with: brew install emacs --srgb --cocoa
     alias emacs='emacs -nw'
 fi
 alias emacsd="emacs --daemon"
