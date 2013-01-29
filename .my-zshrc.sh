@@ -1,14 +1,11 @@
 # set PATH
 CABAL="$HOME/.cabal/bin"
-
 PATH="$PATH:$HOME/bin:$CABAL"
 
 if [[ `uname` = "Darwin" ]]; then
     HASKELL="$HOME/Library/Haskell/bin"
-    PATH="$HASKELL:$PATH"
-
-    HOMEBREW="/usr/local/bin:/usr/local/sbin:/usr/local/lib:/usr/local/share/python:/usr/local/Cellar/ruby/1.9.3-p194/bin"
-    export PATH="$HOMEBREW:$PATH"
+    HOMEBREW="/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/usr/local/lib"
+    PATH="$HOMEBREW:$HASKELL:$PATH"
 fi
 export PATH
 
