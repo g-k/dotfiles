@@ -1,5 +1,4 @@
 (add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/elpa/package.el")
 
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
