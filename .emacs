@@ -26,6 +26,9 @@
   ;; If there is more than one, they won't work right.
  )
 
+;; Hide the menubar
+(menu-bar-mode -1)
+
 ;; Use unique buffer names based on file directory
 ;; http://stackoverflow.com/questions/2903426/display-path-of-file-in-status-bar
 (require 'uniquify)
