@@ -42,6 +42,7 @@
 ;; 		      (lambda nil (save-excursion (byte-compile-file buffer-file-name)))
 ;; 		      nil 'local))) ; Only in current buffer
 
+;; (setenv "PAGER" "/bin/cat")  ;; shell
 
 (setq inhibit-splash-screen t)  ;; Hide the startup screen
 (menu-bar-mode -1)  ;; Hide the menubar
