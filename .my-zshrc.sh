@@ -18,12 +18,6 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 source ~/.nodey.zsh # nodey-tools
 source ~/.npm.zsh   # npm
 
-# Source python virtualenvwrapper
-if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
-    # pip install -U virtualenvwrapper
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-
 # history
 HISTFILE=~/.zsh_history
 
