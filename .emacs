@@ -29,6 +29,15 @@
 ;; One character yes or no prompt
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Mark 80 column (TODO: fix in js2 mode)
+(require 'fill-column-indicator)
+(defun fci-80 ()
+  "set fci column to 80"
+  (setq fci-rule-column 80)
+  (fci-mode 1))
+(add-hook 'after-change-major-mode-hook 'fci-80)
+
+
 ;; Sample custom hook
 ;; https://groups.google.com/forum/?fromgroups#!topic/gnu.emacs.help/80FwoaEzqwI%5B1-25%5D
 ;; (add-hook 'coffee-mode-hook
