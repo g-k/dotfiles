@@ -77,8 +77,8 @@
 (require 'org-install)
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map (kbd "C-c l") 'org-store-link)
+(define-key global-map (kbd "C-c a") 'org-agenda)
 (setq org-log-done t)
 
 ;; TODO Lists to search
@@ -275,12 +275,12 @@
 (setq nose-use-verbose nil) ;; default is t
 (add-hook 'python-mode-hook
           (lambda ()
-            (local-set-key "\C-ca" 'nosetests-all)
-            (local-set-key "\C-cm" 'nosetests-module)
-            (local-set-key "\C-c." 'nosetests-one)
-            (local-set-key "\C-cpa" 'nosetests-pdb-all)
-            (local-set-key "\C-cpm" 'nosetests-pdb-module)
-            (local-set-key "\C-cp." 'nosetests-pdb-one)))
+            (local-set-key (kbd "C-c a") 'nosetests-all)
+            (local-set-key (kbd "C-c m") 'nosetests-module)
+            (local-set-key (kbd "C-c .") 'nosetests-one)
+            (local-set-key (kbd "C-c p a") 'nosetests-pdb-all)
+            (local-set-key (kbd "C-c p m") 'nosetests-pdb-module)
+            (local-set-key (kbd "C-c p .") 'nosetests-pdb-one)))
 (put 'scroll-left 'disabled nil)
 
 
