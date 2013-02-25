@@ -38,6 +38,10 @@
 (add-hook 'after-change-major-mode-hook 'fci-80)
 
 
+;; Effective Emacs Item 2: Invoke M-x without the Alt key
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
+(global-set-key (kbd "C-c C-m") 'execute-extended-command)
+
 ;; Sample custom hook
 ;; https://groups.google.com/forum/?fromgroups#!topic/gnu.emacs.help/80FwoaEzqwI%5B1-25%5D
 ;; (add-hook 'coffee-mode-hook
