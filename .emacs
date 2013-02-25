@@ -42,6 +42,21 @@
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 (global-set-key (kbd "C-c C-m") 'execute-extended-command)
 
+;; Effective Emacs Item 3: Prefer backward-kill-word over Backspace
+;; Note: used to killing regions so kill region if active
+(defun kill-region-or-backward-word ()
+  "kill-region if the region is active. Otherwise backward-kill-word."
+  (interactive)
+  (call-interactively
+   (if (use-region-p)
+       'kill-region
+       'backward-kill-word)))
+
+(global-set-key (kbd "C-w") 'kill-region-or-backward-word)
+(global-set-key (kbd "C-x C-k") 'kill-region)
+(global-set-key (kbd "C-c C-k") 'kill-region)
+
+
 ;; Sample custom hook
 ;; https://groups.google.com/forum/?fromgroups#!topic/gnu.emacs.help/80FwoaEzqwI%5B1-25%5D
 ;; (add-hook 'coffee-mode-hook
