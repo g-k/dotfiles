@@ -16,6 +16,7 @@
 (setq uniquify-buffer-name-style 'reverse)
 
 ;; Use yasnippet everywhere
+(make-directory "~/.emacs.d/snippets/" t)
 (require 'yasnippet)
 (yas/global-mode 1)
 
