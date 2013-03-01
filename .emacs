@@ -126,8 +126,6 @@
 (autoload 'mustache-mode "mustache-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.handlebars$" . mustache-mode))
 
-;; Use html for *.gui files
-(add-to-list 'auto-mode-alist '("\\.gui$" . html-mode))
 
 ;; Markdown mode for .md and .markdown files
 (autoload 'markdown-mode "markdown-mode" nil t)
