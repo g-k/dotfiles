@@ -118,20 +118,19 @@
                              "~/org/Home.org"))
 
 ;; Use puppet for *.pp files
-(require 'puppet-mode)
+(autoload 'puppet-mode "puppet-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
 
 ;; Use mustache mode for handlebars templates
-(add-to-list 'load-path "~/.emacs.d/mustache-mode.el")
-(require 'mustache-mode)
+(autoload 'mustache-mode "mustache-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.handlebars$" . mustache-mode))
 
 ;; Use html for *.gui files
 (add-to-list 'auto-mode-alist '("\\.gui$" . html-mode))
 
 ;; Markdown mode for .md and .markdown files
-(require 'markdown-mode)
+(autoload 'markdown-mode "markdown-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 
@@ -190,7 +189,7 @@
 (setq indent-tabs-mode nil)
 
 ;; See tabs and spaces using whitespace-mode
-(require 'whitespace)
+(autoload 'whitespace-mode "whitespace-mode" nil t)
 
 ;; Delete whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -234,7 +233,7 @@
 ;; Coffeescript
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'coffee-mode)
+(autoload 'coffee-mode "coffee-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("\\.cson$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
@@ -280,7 +279,7 @@
 ;; Haskell
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'haskell-mode)
+(autoload 'haskell-mode "haskell-mode" nil t)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
