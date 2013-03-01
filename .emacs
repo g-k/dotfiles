@@ -256,9 +256,10 @@
 
 (setq js2-basic-offset 2)
 (setq js2-bounce-indent-p t)
+(setq js2-cleanup-whitespace t)
+(setq js2-allow-keywords-as-property-names nil)
 
-;; M-x customize-group RET js2-mode RET
-(autoload 'js2-mode "js2-mode" nil t)
+;; (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
