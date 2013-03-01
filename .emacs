@@ -30,7 +30,7 @@
 ;; One character yes or no prompt
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Mark 80 column (TODO: fix in js2 mode)
+;; Mark 80 column
 (require 'fill-column-indicator)
 (defun fci-80 ()
   "set fci column to 80"
@@ -262,6 +262,8 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
+;; TODO: Figure out why after-change-major-mode-hook isn't applying
+(add-hook 'js2-mode-hook 'fci-80)
 
 ;; Erlang
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
