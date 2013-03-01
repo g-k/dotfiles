@@ -125,7 +125,7 @@
 ;; Use mustache mode for handlebars templates
 (autoload 'mustache-mode "mustache-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.handlebars$" . mustache-mode))
-
+(add-to-list 'auto-mode-alist '("\\.hbs$" . mustache-mode))
 
 ;; Markdown mode for .md and .markdown files
 (autoload 'markdown-mode "markdown-mode" nil t)
