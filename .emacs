@@ -58,21 +58,26 @@
 (global-set-key (kbd "C-c C-k") 'kill-region)
 
 
-;; Sample custom hook
-;; https://groups.google.com/forum/?fromgroups#!topic/gnu.emacs.help/80FwoaEzqwI%5B1-25%5D
-;; (add-hook 'coffee-mode-hook
-;; 	  (lambda nil
-;; 	    (add-hook 'after-save-hook
-;; 		      (lambda nil (shell-command "npm run-script build-browser && osascript ~/Dropbox/bin/reload-chrome.applescript 'Binary Heap'"))
-;; 		      nil 'local))) ; Only in current buffer
+;; Sample custom hooks
+;; Note: name hooks so I can remove it them later
+;; (defun reload-tab ()
+;;   (defvar tab-name "JS1k")
+;;   (message "reloading tab: %s" tab-name)
+;;   (shell-command
+;;    (concat "osascript " "~/Dropbox/bin/reload-chrome.applescript " "'" tab-name "'")))
 
-;; Automatically recompile elisp files
-;; TODO name hook so I can remove it
-;; (add-hook 'emacs-lisp-mode-hook
-;; 	  (lambda nil
-;; 	    (add-hook 'after-save-hook
-;; 		      (lambda nil (save-excursion (byte-compile-file buffer-file-name)))
-;; 		      nil 'local))) ; Only in current buffer
+;; (defun reload-tab-on-save ()
+;;   (message "saving tab to reload")
+;;   (add-hook 'after-save-hook 'reload-tab nil 'local))
+
+;; (defun my-compile ()
+;;   "automatically compile buffer file"
+;;   (save-excursion (byte-compile-file buffer-file-name)))
+
+;; (defun recompile-elisp-on-save ()
+;;   "Recompile elisp in current buffer on save"
+;;   (add-hook 'after-save-hook 'my-compile nil 'local))
+;; (add-hook 'emacs-lisp-mode-hook 'recompile-elisp-on-save)
 
 ;; (setenv "PAGER" "/bin/cat")  ;; shell
 
