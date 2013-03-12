@@ -181,6 +181,12 @@
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
 
+;; Save point position between sessions
+;; http://whattheemacsd.com/init.el-03.html
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
 ;; Remember my windows, buffers, etc.
 ;; (desktop-save-mode 1)
 
