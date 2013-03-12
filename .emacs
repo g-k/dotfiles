@@ -169,9 +169,16 @@
 
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
-
 ;; Reset buffers if the files change on disk
 (global-auto-revert-mode t)
+
+;; Also auto refresh dired, but be quiet about it
+;; http://whattheemacsd.com/sane-defaults.el-01.html
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
+
+;; Don't pass --dired to ls and fail to parse weird filenames
+(setq dired-use-ls-dired nil)
 
 
 ;; DISPLAY
