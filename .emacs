@@ -8,6 +8,11 @@
 ;; Add the user-contributed repository
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+;; Add the user-contributed repository
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/"))
+
 (package-initialize)
 
 ;; Use unique buffer names based on file directory
