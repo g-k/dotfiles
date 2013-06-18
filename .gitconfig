@@ -14,4 +14,4 @@
 [push]
 	default = current
 [core]
-	editor = emacs
+	editor = emacsclient
