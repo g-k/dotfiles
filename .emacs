@@ -328,6 +328,14 @@
 ;; JSON
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
+;; tern.js
+(add-to-list 'load-path "~/src/tern/emacs/")
+(autoload 'tern-mode "tern.el" nil t)
+
+(defun my-tern-hook ()
+  "enable tern.js"
+  (tern-mode t))
+(add-hook 'js2-mode-hook 'my-tern-hook)
 
 (add-hook 'js2-mode-hook 'fci-80)
 
