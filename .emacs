@@ -50,6 +50,11 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+;; http://whattheemacsd.com/mac.el-01.html
+;; (setq mac-command-modifier 'meta)
+;; (setq mac-option-modifier 'super)
+;; (setq ns-function-modifier 'hyper)
+
 ;; Mark 80 column
 (require 'fill-column-indicator)
 (defun fci-80 ()
