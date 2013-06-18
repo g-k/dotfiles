@@ -1,6 +1,6 @@
 # set PATH
 CABAL="$HOME/.cabal/bin"
-PATH="$PATH:$HOME/bin:$CABAL"
+PATH="$HOME/bin:$CABAL:$PATH"
 
 if [[ `uname` = "Darwin" ]]; then
     HASKELL="$HOME/Library/Haskell/bin"
