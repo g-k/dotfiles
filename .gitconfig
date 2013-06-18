@@ -15,3 +15,5 @@
 	default = current
 [core]
 	editor = emacsclient
+[link]
+	browser = github
