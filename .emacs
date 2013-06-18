@@ -306,7 +306,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
-;; TODO: Figure out why after-change-major-mode-hook isn't applying
 (add-hook 'js2-mode-hook 'fci-80)
 
 
