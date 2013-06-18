@@ -40,6 +40,10 @@
 ;; One character yes or no prompt
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+
+(require 'undo-tree)
+(global-undo-tree-mode)
+
 ;; Mark 80 column
 (require 'fill-column-indicator)
 (defun fci-80 ()
