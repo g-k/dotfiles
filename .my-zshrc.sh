@@ -64,3 +64,7 @@ function svnpop; {
     patch -p0 < "$1" && rm "$1"
 }
 
+function cuda; {
+    export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.0/lib:$DYLD_LIBRARY_PATH
+}
+
