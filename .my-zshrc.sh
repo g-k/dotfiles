@@ -49,3 +49,18 @@ function google; {
 
 # Make directory and change to it
 mdc() { mkdir -p "$1" && cd "$1" }
+
+# http://stackoverflow.com/questions/1554278/temporarily-put-away-uncommited-changes-in-subversion-a-la-git-stash
+
+function svnstash; {
+    svn diff > "$1".patch;
+}
+
+function svnapply; {
+    patch -p0 < "$1"
+}
+
+function svnpop; {
+    patch -p0 < "$1" && rm "$1"
+}
+
