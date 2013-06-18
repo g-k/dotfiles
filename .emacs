@@ -233,7 +233,7 @@
 (setq indent-tabs-mode nil)
 
 ;; See tabs and spaces using whitespace-mode
-(autoload 'whitespace-mode "whitespace-mode" nil t)
+(autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
 
 ;; Delete whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
