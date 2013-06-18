@@ -1,5 +1,11 @@
 (add-to-list 'load-path "~/.emacs.d")
 
+;; http://www.idryman.org/blog/2013/03/23/installing-swank-dot-js/
+;; (add-to-list 'load-path "~/.emacs.d/slime")
+;; (setq inferior-lisp-program "/usr/local/bin/sbcl")
+;; (require 'slime)
+;; (slime-setup)
+
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
 (add-to-list 'package-archives
