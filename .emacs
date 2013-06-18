@@ -15,6 +15,11 @@
 
 (package-initialize)
 
+
+;; Don't keep undo history for buffer list
+;; http://lists.gnu.org/archive/html/help-gnu-emacs/2013-04/msg00497.html
+(add-hook 'Buffer-menu-mode-hook 'buffer-disable-undo)
+
 ;; Use unique buffer names based on file directory
 ;; http://stackoverflow.com/questions/2903426/display-path-of-file-in-status-bar
 (require 'uniquify)
