@@ -309,6 +309,17 @@
 ;; TODO: Figure out why after-change-major-mode-hook isn't applying
 (add-hook 'js2-mode-hook 'fci-80)
 
+
+;; CSS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+(autoload 'css-mode "css-mode" nil t)
+
+(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
+(autoload 'css-mode "css-mode" nil t)
+
+
 ;; Erlang
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
