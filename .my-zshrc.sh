@@ -3,9 +3,9 @@ CABAL="$HOME/.cabal/bin"
 PATH="$HOME/bin:$CABAL:$PATH"
 
 if [[ `uname` = "Darwin" ]]; then
-    HASKELL="$HOME/Library/Haskell/bin"
-    HOMEBREW="/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/usr/local/lib"
-    PATH="$HOMEBREW:$HASKELL:$PATH"
+    HOMEBREW="/usr/local/share/npm/bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/usr/local/lib:/usr/local/lib/python2.7/site-packages"
+    CUDA_BIN="/Developer/NVIDIA/CUDA-5.0/bin"
+    PATH="$CUDA_BIN:$HOMEBREW:$PATH"
 fi
 export PATH
 
