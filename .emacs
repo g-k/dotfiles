@@ -21,6 +21,49 @@
 
 (package-initialize)
 
+;; install desired packages if necessary
+;; http://stackoverflow.com/questions/13866848/how-to-save-a-list-of-all-the-installed-packages-in-emacs-24
+;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
+(mapc
+ (lambda (package)
+   (or (package-installed-p package)
+       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+	   (package-install package))))
+ '(auto-complete
+   browse-kill-ring
+   buffer-move
+   clojure-test-mode
+   clojurescript-mode
+   coffee-mode
+   color-theme-zenburn
+   color-theme
+   fill-column-indicator
+   glsl-mode
+   handlebars-mode
+   js2-refactor
+   dash
+   js2-mode
+   json-mode
+   less-css-mode
+   magit
+   cl-lib
+   markdown-mode
+   minimap
+   multiple-cursors
+   nose
+   nrepl
+   clojure-mode
+   popup
+   puppet-mode
+   python-mode
+   python-pep8
+   python-pylint
+   undo-tree
+   yasnippet
+   yasnippet-bundle)
+ )
+
+
 
 ;; Don't keep undo history for buffer list
 ;; http://lists.gnu.org/archive/html/help-gnu-emacs/2013-04/msg00497.html
