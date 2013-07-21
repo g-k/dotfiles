@@ -181,6 +181,9 @@
   (setq interprogram-cut-function 'mac-paste)
   (setq interprogram-paste-function 'mac-copy))
 
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Clipboard.html
+(setq x-select-enable-clipboard t)
+
 
 ;; Use org-mode for .org files
 (require 'org-install)
