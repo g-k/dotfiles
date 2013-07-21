@@ -1,1 +1,1 @@
-/Users/gregg/.zprezto/runcoms/zshenv
+/home/greg/.zprezto/runcoms/zshenv
