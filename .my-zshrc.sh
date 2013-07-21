@@ -56,6 +56,9 @@ mdc() { mkdir -p "$1" && cd "$1" }
 
 # http://stackoverflow.com/questions/1554278/temporarily-put-away-uncommited-changes-in-subversion-a-la-git-stash
 
+# fix for emscripten: http://permalink.gmane.org/gmane.comp.compilers.emscripten/1219
+LLVM_ADD_VERSION=3.2
+
 function svnstash; {
     svn diff > "$1".patch;
 }
