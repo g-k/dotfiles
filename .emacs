@@ -76,6 +76,7 @@
 
 ;; Use yasnippet everywhere
 (make-directory "~/.emacs.d/snippets/" t)
+(setq default-snippets-path "~/.emacs.d/snippets/")
 (require 'yasnippet)
 (yas/global-mode 1)
 
