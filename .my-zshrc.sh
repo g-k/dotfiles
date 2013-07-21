@@ -1,3 +1,7 @@
+autoload -Uz promptinit
+promptinit
+prompt minimal
+
 # set PATH
 CABAL="$HOME/.cabal/bin"
 PATH="$HOME/bin:$CABAL:$PATH"
