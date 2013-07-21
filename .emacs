@@ -107,6 +107,9 @@
   (fci-mode 1))
 (add-hook 'after-change-major-mode-hook 'fci-80)
 
+;; Sublime style minimap
+(require 'minimap)
+
 
 ;; Effective Emacs Item 2: Invoke M-x without the Alt key
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
