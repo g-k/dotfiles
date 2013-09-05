@@ -63,6 +63,11 @@
    yasnippet-bundle)
  )
 
+; Some useful shortcuts for finding files by name or by a pattern
+(setq read-file-name-completion-ignore-case t)
+(global-set-key (kbd "C-x C-n") 'find-name-dired)
+(global-set-key (kbd "C-x C-g") 'rgrep)
+
 
 
 ;; Don't keep undo history for buffer list
