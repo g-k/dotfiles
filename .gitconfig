@@ -17,3 +17,5 @@
 	editor = emacsclient
 [link]
 	browser = github
+[rerere]
+	enabled = true
