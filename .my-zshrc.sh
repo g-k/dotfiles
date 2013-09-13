@@ -1,3 +1,9 @@
+autoload -Uz promptinit
+promptinit
+# prompt minimal ## breaks with large git repos since it runs git ls-files
+prompt off
+prompt='%2~ » '
+
 # set PATH
 CABAL="$HOME/.cabal/bin"
 PATH="$HOME/bin:$CABAL:$PATH"
