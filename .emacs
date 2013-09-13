@@ -97,6 +97,9 @@
 ;; One character yes or no prompt
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; remote editing
+(require 'tramp)
+(setq password-cache-expiry nil)
 
 (require 'undo-tree)
 (global-undo-tree-mode)
