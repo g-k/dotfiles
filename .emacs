@@ -473,3 +473,5 @@
 (autoload 'php-mode "php-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.thtml$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl$" . php-mode))
+
