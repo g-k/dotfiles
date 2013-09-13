@@ -67,12 +67,10 @@
    )
  )
 
-; Some useful shortcuts for finding files by name or by a pattern
-(setq read-file-name-completion-ignore-case t)
-(global-set-key (kbd "C-x C-n") 'find-name-dired)
-(global-set-key (kbd "C-x C-g") 'rgrep)
-
-
+;; search
+(require 'projectile)
+(projectile-global-mode) ;; to enable in all buffers
+(setq projectile-enable-caching t)
 
 ;; Don't keep undo history for buffer list
 ;; http://lists.gnu.org/archive/html/help-gnu-emacs/2013-04/msg00497.html
