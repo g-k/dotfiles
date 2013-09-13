@@ -62,7 +62,9 @@
    python-pylint
    undo-tree
    yasnippet
-   yasnippet-bundle)
+   yasnippet-bundle
+   projectile
+   )
  )
 
 ; Some useful shortcuts for finding files by name or by a pattern
