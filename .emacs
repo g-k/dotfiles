@@ -510,6 +510,17 @@
 (add-to-list 'auto-mode-alist '("\\.thtml$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl$" . php-mode))
 
+;; use tabs
+(add-hook 'php-mode-hook 'php-tabs)
+(defun php-tabs ()
+  "Use tabs in php-mode"
+  (setq indent-tabs-mode t)
+  (let ((my-tab-width 4))
+	(setq tab-width my-tab-width)
+	(setq c-basic-indent my-tab-width)
+	(set (make-local-variable 'tab-stop-list)
+	     (number-sequence my-tab-width 200 my-tab-width))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
