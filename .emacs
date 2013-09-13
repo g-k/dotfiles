@@ -27,8 +27,7 @@
 (mapc
  (lambda (package)
    (or (package-installed-p package)
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-	   (package-install package))))
+       (package-install package)))
  '(auto-complete
    browse-kill-ring
    buffer-move
