@@ -53,7 +53,9 @@
    nose
    nrepl
    clojure-mode
+   nrepl
    popup
+   php-mode
    puppet-mode
    python-mode
    python-pep8
