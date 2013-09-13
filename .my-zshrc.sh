@@ -16,7 +16,6 @@ export PATH
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # zsh completions
-source ~/.nodey.zsh # nodey-tools
 source ~/.npm.zsh   # npm
 
 # history
