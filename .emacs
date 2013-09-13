@@ -222,8 +222,10 @@
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 
-;; Use ruby-mode for Vagrantfiles
+;; Use ruby-mode for Gem and Vagrantfiles
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile.lock$" . ruby-mode))
 
 
 ;; Use octave-mode for .m files (for ml class)
