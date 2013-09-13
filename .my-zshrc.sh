@@ -37,6 +37,15 @@ alias emacsd="emacs --daemon"
 alias emacsc="emacsclient -t"
 
 
+function start-ssh-agent; {
+    eval "$(ssh-agent)"
+    ssh-add ~/.ssh/id_rsa
+}
+
+function kill-ssh-agent; {
+    eval "$(ssh-agent -k)"
+}
+
 ## Functions: from @webcoyote
 
 # URL encode something and print it.
