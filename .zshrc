@@ -1,1 +1,1 @@
-/home/greg/.zprezto/runcoms/zshrc
+/home/gguthe/.zprezto/runcoms/zshrc
