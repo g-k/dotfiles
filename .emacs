@@ -30,6 +30,7 @@
        (package-install package)))
  '(4clojure
    auto-complete
+   ace-jump-mode
    browse-kill-ring
    buffer-move
    cider
@@ -72,6 +73,8 @@
 (require 'projectile)
 (projectile-global-mode) ;; to enable in all buffers
 (setq projectile-enable-caching t)
+
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; Don't keep undo history for buffer list
 ;; http://lists.gnu.org/archive/html/help-gnu-emacs/2013-04/msg00497.html
