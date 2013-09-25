@@ -28,9 +28,8 @@
  (lambda (package)
    (or (package-installed-p package)
        (package-install package)))
- '(4clojure
+ '(ace-jump-mode
    auto-complete
-   ace-jump-mode
    browse-kill-ring
    buffer-move
    cider
@@ -43,9 +42,12 @@
    color-theme-zenburn
    dash
    discover
+   flx
    glsl-mode
    guide-key
    handlebars-mode
+   helm
+   helm-projectile
    js2-mode
    json-mode
    less-css-mode
@@ -67,7 +69,8 @@
    undo-tree
    web-mode
    yasnippet
-   yasnippet-bundle))
+   yasnippet-bundle
+   4clojure))
 
 ;; search
 (require 'projectile)
