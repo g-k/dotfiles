@@ -1,7 +1,3 @@
-autoload -Uz promptinit
-promptinit
-prompt minimal
-
 # set PATH
 CABAL="$HOME/.cabal/bin"
 PATH="$HOME/bin:$CABAL:$PATH"
@@ -14,6 +10,11 @@ fi
 export PATH
 
 export PYTHONSTARTUP="$HOME/.pythonrc"
+
+# load powerline shell
+if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+fi
 
 # zsh completions
 source ~/.npm.zsh   # npm
