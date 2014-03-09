@@ -83,3 +83,6 @@ function svnpop; {
 function cuda; {
     export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.0/lib:$DYLD_LIBRARY_PATH
 }
+
+echo 'nautilus ~/Dropbox/read'
+echo 'run: emacs -nw ~/Dropbox/TODO.org'
