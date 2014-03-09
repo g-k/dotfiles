@@ -28,43 +28,46 @@
  (lambda (package)
    (or (package-installed-p package)
        (package-install package)))
- '(auto-complete
+ '(4clojure
+   auto-complete
    browse-kill-ring
    buffer-move
+   cider
+   cl-lib
+   clojure-mode
    clojure-test-mode
    clojurescript-mode
    coffee-mode
-   color-theme-zenburn
    color-theme
+   color-theme-zenburn
+   dash
+   discover
    fill-column-indicator
    glsl-mode
+   guide-key
    handlebars-mode
-   js2-refactor
-   dash
    js2-mode
    json-mode
    less-css-mode
    magit
-   cl-lib
    markdown-mode
    minimap
    multiple-cursors
    nose
-   nrepl
-   clojure-mode
-   nrepl
-   popup
+   paredit
+   paredit-menu
    php-mode
+   popup
+   projectile
    puppet-mode
    python-mode
    python-pep8
    python-pylint
+   rainbow-delimiters
    undo-tree
+   web-mode
    yasnippet
-   yasnippet-bundle
-   projectile
-   )
- )
+   yasnippet-bundle))
 
 ;; search
 (require 'projectile)
@@ -139,6 +142,17 @@
 (global-set-key (kbd "C-c C-k") 'kill-region)
 
 
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+
 ;; Sample custom hooks
 ;; Note: name hooks so I can remove it them later
 ;; (defun reload-tab ()
@@ -166,9 +180,8 @@
 (menu-bar-mode -1)  ;; Hide the menubar
 (show-paren-mode 1)  ;; highlight matching parens
 (eldoc-mode 1) ;; Show elisp help docs
-;; ;; Look into paredit-mode for writing elisp
-;; (define-key emacs-lisp-mode-map
-;;   (kbd "M-.") 'find-function-at-point)
+(define-key emacs-lisp-mode-map
+  (kbd "M-.") 'find-function-at-point)
 
 ;; Highlight the current line (so I can find it on a big monitor w/ many buffers)
 (global-hl-line-mode t)
@@ -205,6 +218,37 @@
 ;; TODO Lists to search
 (setq org-agenda-files (list "~/org/Work.org"
                              "~/org/Home.org"))
+
+
+;; elisp and other lisps
+(require 'eldoc)
+(require 'paredit-menu) ; loads paredit too
+(require 'rainbow-delimiters)
+(eldoc-add-command
+ 'paredit-backward-delete
+ 'paredit-close-round)
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; clojure
+(require 'cider)
+
+(add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'eldoc-mode)
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
+
+(setq nrepl-buffer-name-show-port t)
+(setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
+(setq cider-repl-history-size 1000) ; the default is 500
 
 ;; Use puppet for *.pp files
 (autoload 'puppet-mode "puppet-mode" nil t)
@@ -389,7 +433,7 @@
 (setq js2-allow-keywords-as-property-names nil)
 
 (autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js" . js2-mode))
 
 ;; JSON
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
@@ -401,7 +445,7 @@
 (defun my-tern-hook ()
   "enable tern.js"
   (tern-mode t))
-(add-hook 'js2-mode-hook 'my-tern-hook)
+;; (add-hook 'js2-mode-hook 'my-tern-hook)
 
 (add-hook 'js2-mode-hook 'fci-80)
 
