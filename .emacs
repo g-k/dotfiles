@@ -42,7 +42,6 @@
    color-theme-zenburn
    dash
    discover
-   fill-column-indicator
    glsl-mode
    guide-key
    handlebars-mode
@@ -110,14 +109,6 @@
 ;; (setq mac-command-modifier 'meta)
 ;; (setq mac-option-modifier 'super)
 ;; (setq ns-function-modifier 'hyper)
-
-;; Mark 80 column
-(require 'fill-column-indicator)
-(defun fci-80 ()
-  "set fci column to 80"
-  (setq fci-rule-column 80)
-  (fci-mode 1))
-(add-hook 'after-change-major-mode-hook 'fci-80)
 
 ;; Sublime style minimap
 (require 'minimap)
@@ -446,9 +437,6 @@
   "enable tern.js"
   (tern-mode t))
 ;; (add-hook 'js2-mode-hook 'my-tern-hook)
-
-(add-hook 'js2-mode-hook 'fci-80)
-
 
 ;; CSS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
