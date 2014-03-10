@@ -1,8 +1,6 @@
-autoload -Uz promptinit
-promptinit
-# prompt minimal ## breaks with large git repos since it runs git ls-files
-prompt off
-prompt='%2~ » '
+if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+fi
 
 # set PATH
 CABAL="$HOME/.cabal/bin"
