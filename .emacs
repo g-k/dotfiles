@@ -41,7 +41,6 @@
    clojurescript-mode
    coffee-mode
    color-theme
-   color-theme-zenburn
    dash
    discover
    flx
