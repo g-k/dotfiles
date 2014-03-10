@@ -529,6 +529,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(diff-changed ((t (:foreground "blue"))))
+ '(highlight ((t (:background "black" :foreground "black"))))
+ '(secondary-selection ((t nil)))
  '(whitespace-indentation ((t (:foreground "firebrick"))))
  '(whitespace-line ((t (:foreground "white"))))
  '(whitespace-space ((t (:foreground "lightgray"))))
