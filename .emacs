@@ -28,7 +28,9 @@
  (lambda (package)
    (or (package-installed-p package)
        (package-install package)))
- '(ace-jump-mode
+ '(
+   4clojure
+   ace-jump-mode
    auto-complete
    browse-kill-ring
    buffer-move
@@ -43,11 +45,13 @@
    dash
    discover
    flx
+   flx-ido
    glsl-mode
    guide-key
    handlebars-mode
    helm
    helm-projectile
+   ido
    js2-mode
    json-mode
    less-css-mode
@@ -70,7 +74,7 @@
    web-mode
    yasnippet
    yasnippet-bundle
-   4clojure))
+   ))
 
 ;; search
 (require 'projectile)
@@ -96,6 +100,8 @@
 
 ;; Use ido-mode everywhere (find files and dirs)
 (ido-mode 1)
+(flx-ido-mode 1)
+(setq ido-use-faces nil) ;; disable ido faces to see flx highlights
 
 ;; Use delete to delete char to left and not current cursor char
 (when (equal system-type 'darwin)
