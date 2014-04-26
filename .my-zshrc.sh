@@ -1,3 +1,5 @@
+which prompt &> /dev/null && prompt off
+
 if [[ -r /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
