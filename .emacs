@@ -18,66 +18,124 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 
+;; Check if we're on Emacs 24.4 or newer, if so, use the pinned package feature
+(when (boundp 'package-pinned-packages)
+  (setq package-pinned-packages
+	'((ac-cider . "melpa-stable")
+	  (ace-jump-mode . "melpa-stable")
+	  (auto-complete . "melpa-stable")
+	  (browse-kill-ring . "melpa-stable")
+	  (buffer-move . "melpa-stable")
+	  (cider . "melpa-stable")
+	  (clojure-mode . "melpa-stable")
+	  (clojurescript-mode . "melpa-stable")
+	  (coffee-mode . "melpa-stable")
+	  (dash . "melpa-stable")
+	  (discover . "melpa-stable")
+	  (flx . "melpa-stable")
+	  (flx-ido . "melpa-stable")
+	  ;; (glsl-mode . "melpa-stable")
+	  (guide-key . "melpa-stable")
+	  ;; (handlebars-mode . "melpa-stable")
+	  (helm . "melpa-stable")
+	  (helm-projectile . "melpa-stable")
+	  (ido . "melpa-stable")
+	  (js2-mode . "melpa-stable")
+	  (json-mode . "melpa-stable")
+	  (less-css-mode . "melpa-stable")
+	  (magit . "melpa-stable")
+	  (markdown-mode . "melpa-stable")
+	  ;; (minimap . "melpa-stable") ;; replaed with sublimitity?
+	  (multiple-cursors . "melpa-stable")
+	  (nose . "melpa-stable")
+	  (paredit . "melpa-stable")
+	  ;; (paredit-menu . "melpa-stable")
+	  (php-mode . "melpa-stable")
+	  (popup . "melpa-stable")
+	  (projectile . "melpa-stable")
+	  (puppet-mode . "melpa-stable")
+	  (python-mode . "melpa-stable")
+	  (python-pep8 . "melpa-stable")
+	  (python-pylint . "melpa-stable")
+	  (racer . "melpa-stable")
+	  (rainbow-delimiters . "melpa-stable")
+	  ;; (undo-tree . "melpa-stable")
+	  (web-mode . "melpa-stable")
+	  (yasnippet . "melpa-stable")
+	  (yasnippet-bundle . "melpa-stable")
+	  )))
 
-(package-initialize)
+(package-initialize t)
 
-;; install desired packages if necessary
-;; http://stackoverflow.com/questions/13866848/how-to-save-a-list-of-all-the-installed-packages-in-emacs-24
-;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
-(mapc
- (lambda (package)
-   (or (package-installed-p package)
-       (package-install package)))
- '(
-   4clojure
-   ace-jump-mode
-   auto-complete
-   browse-kill-ring
-   buffer-move
-   cider
-   cl-lib
-   clojure-mode
-   clojure-test-mode
-   clojurescript-mode
-   coffee-mode
-   color-theme
-   dash
-   discover
-   flx
-   flx-ido
-   glsl-mode
-   guide-key
-   handlebars-mode
-   helm
-   helm-projectile
-   ido
-   js2-mode
-   json-mode
-   less-css-mode
-   magit
-   markdown-mode
-   minimap
-   multiple-cursors
-   nose
-   paredit
-   paredit-menu
-   php-mode
-   popup
-   projectile
-   puppet-mode
-   python-mode
-   python-pep8
-   python-pylint
-   rainbow-delimiters
-   undo-tree
-   web-mode
-   yasnippet
-   yasnippet-bundle
-   ))
+(defun install-required-packages (package-list)
+  (when (>= emacs-major-version 24)
+    (package-refresh-contents)
+    (mapc (lambda (package)
+	    (or (package-installed-p package)
+		(package-install package)))
+	  package-list)))
+
+
+(setq required-package-list '(ac-cider
+			      ace-jump-mode
+			      auto-complete
+			      browse-kill-ring
+			      buffer-move
+			      cider
+			      clojure-mode
+			      clojurescript-mode
+			      coffee-mode
+			      dash
+			      discover
+			      flx
+			      flx-ido
+			      ;; glsl-mode
+			      guide-key
+			      ;; handlebars-mode
+			      helm
+			      helm-projectile
+			      ido
+			      js2-mode
+			      json-mode
+			      less-css-mode
+			      magit
+			      markdown-mode
+			      ;; minimap
+			      multiple-cursors
+			      nose
+			      paredit
+			      ;; paredit-menu
+			      php-mode
+			      popup
+			      projectile
+			      puppet-mode
+			      python-mode
+			      python-pep8
+			      python-pylint
+			      rainbow-delimiters
+			      ;; undo-tree
+			      web-mode
+			      yasnippet
+			      yasnippet-bundle))
+
+;; (install-required-packages required-package-list)
+
+
+;; http://www.idryman.org/blog/2013/03/23/installing-swank-dot-js/
+;; (add-to-list 'load-path "~/.emacs.d/slime")
+;; (setq inferior-lisp-program "/usr/local/bin/sbcl")
+;; (require 'slime)
+;; (slime-setup)
+
+;; IRC
+(setq rcirc-server-alist
+      '(("irc.mozilla.org" :port 6697 :encryption tls
+	 :channels ("#servo"))
+	("irc.freenode.net" :port 6697 :encryption tls
+	 :channels ())))
 
 ;; search
-(require 'projectile)
-(projectile-global-mode) ;; to enable in all buffers
+(add-hook 'after-init-hook #'projectile-global-mode) ;; to enable in all buffers
 (setq projectile-enable-caching t)
 
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
@@ -91,16 +149,18 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
 
-;; Use yasnippet everywhere
+
 (make-directory "~/.emacs.d/snippets/" t)
 (setq default-snippets-path "~/.emacs.d/snippets/")
-(require 'yasnippet)
-(yas/global-mode 1)
-
-;; Use ido-mode everywhere (find files and dirs)
-(ido-mode 1)
-(flx-ido-mode 1)
-(setq ido-use-faces nil) ;; disable ido faces to see flx highlights
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (package-initialize)
+	    (require 'yasnippet)
+	    (yas/global-mode 1) ;; Use yasnippet everywhere
+	    (ido-mode 1) ;; Use ido-mode everywhere (find files and dirs)
+	    (flx-ido-mode 1)
+	    (setq ido-use-faces nil) ;; disable ido faces to see flx highlights
+	    ))
 
 ;; Use delete to delete char to left and not current cursor char
 (when (equal system-type 'darwin)
@@ -143,17 +203,16 @@
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-c C-k") 'kill-region)
 
-
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+	    (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+	    (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+	    (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+	    (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+	    (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+	    (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+	    (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))))
 
 ;; Sample custom hooks
 ;; Note: name hooks so I can remove it them later
@@ -221,36 +280,47 @@
 (setq org-agenda-files (list "~/org/Work.org"
                              "~/org/Home.org"))
 
+(add-hook
+ 'after-init-hook
+ (lambda ()
+   ;; elisp and other lisps
+   (require 'eldoc)
+   (require 'paredit) ; required paredit-menu loads paredit too
+   (require 'rainbow-delimiters)
+   (eldoc-add-command
+    'paredit-backward-delete
+    'paredit-close-round)
+   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 
-;; elisp and other lisps
-(require 'eldoc)
-(require 'paredit-menu) ; loads paredit too
-(require 'rainbow-delimiters)
-(eldoc-add-command
- 'paredit-backward-delete
- 'paredit-close-round)
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+   (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+   (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+   (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+   (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+   (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+   (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-;; clojure
-(require 'cider)
+   ;; clojure
+   (require 'cider)
 
-(add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'clojure-mode-hook 'eldoc-mode)
-(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+   (add-hook 'clojure-mode-hook 'paredit-mode)
+   ;; (add-hook 'clojure-mode-hook 'eldoc-mode)
+   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(add-hook 'cider-repl-mode-hook 'paredit-mode)
+   ;; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+   (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
-(setq nrepl-buffer-name-show-port t)
-(setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
-(setq cider-repl-history-size 1000) ; the default is 500
+   (setq nrepl-buffer-name-show-port t)
+   (setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
+   (setq cider-repl-history-size 1000) ; the default is 500
+   (setq ac-delay 0.0)
+   (setq ac-quick-help-delay 0.5)
+
+   (require 'ac-cider)
+   (add-hook 'cider-mode-hook 'ac-cider-setup)
+   (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+   (add-to-list 'ac-modes 'cider-mode)
+   (add-to-list 'ac-modes 'cider-repl-mode)))
 
 ;; Use puppet for *.pp files
 (autoload 'puppet-mode "puppet-mode" nil t)
@@ -305,12 +375,14 @@
 (setq transient-mark-mode t)
 
 ;; Swap buffers easily
-(require 'buffer-move)
-;; (global-set-key (kbd "<C-S-up>")     'buf-move-up)
-;; (global-set-key (kbd "<C-S-down>")   'buf-move-down)
-(global-set-key (kbd "<f1>")  'buf-move-left)
-(global-set-key (kbd "<f2>")  'buf-move-right)
-
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (require 'buffer-move)
+	    ;; (global-set-key (kbd "<C-S-up>")     'buf-move-up)
+	    ;; (global-set-key (kbd "<C-S-down>")   'buf-move-down)
+	    (global-set-key (kbd "<f1>")  'buf-move-left)
+	    (global-set-key (kbd "<f2>")  'buf-move-right)
+	    ))
 
 ;; BACKUP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -347,175 +419,176 @@
 
 ;; Delete extra newlines at end of file
 (defun delete-trailing-blank-lines ()
-      "Deletes all blank lines at the end of the file."
-      (interactive)
-      (save-excursion
-        (save-restriction
-          (widen)
-          (goto-char (point-max))
-          (delete-blank-lines))))
+  "Deletes all blank lines at the end of the file."
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (widen)
+      (goto-char (point-max))
+      (delete-blank-lines))))
 (add-hook 'before-save-hook 'delete-trailing-blank-lines)
 
+(add-hook
+ 'after-init-hook
+ (lambda ()
+   (package-initialize)
 
-;; AutoComplete.el
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "/Users/gregg/.emacs.d/ac-dict")
-(ac-config-default)
-;; make selected option in autocomplete menu high contrast
-;; (set-face-background 'ac-selection-face "darkinvisbleyellow") ;; black/gray
+   (require 'magit)
 
+   ;; AutoComplete.el
+   (require 'auto-complete-config)
+   ;; (add-to-list 'ac-dictionary-directories "/Users/gregg/.emacs.d/ac-dict")
+   (ac-config-default)
+   ;; make selected option in autocomplete menu high contrast
+   ;; (set-face-background 'ac-selection-face "darkinvisbleyellow") ;; black/gray
 
-;; C
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;; C
+   ;; BSD KNF style for C or something like it
+   (setq c-basic-offset 4)
+   (c-add-style "openbsd"
+		'((c-basic-offset . 8)
+		  (c-comment-only-line-offset . 0)
+		  (c-offsets-alist . ((statement-block-intro . +)
+				      (knr-argdecl-intro . +)
+				      (substatement-open . 0)
+				      (label . 0)
+				      (statement-cont . +)))))
+   (put 'downcase-region 'disabled nil)
 
-;; BSD KNF style for C or something like it
-(setq c-basic-offset 4)
-(c-add-style "openbsd"
-             '((c-basic-offset . 8)
-               (c-comment-only-line-offset . 0)
-               (c-offsets-alist . ((statement-block-intro . +)
-                                   (knr-argdecl-intro . +)
-                                   (substatement-open . 0)
-                                   (label . 0)
-                                   (statement-cont . +)))))
-(put 'downcase-region 'disabled nil)
-
-;; Shaders
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(autoload 'glsl-mode "glsl-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.glsl$" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.vert$" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.frag$" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.geom$" . glsl-mode))
-
-
-;; Coffeescript
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(autoload 'coffee-mode "coffee-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-(add-to-list 'auto-mode-alist '("\\.cson$" . coffee-mode))
-(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
-;; compile on save
-(add-hook 'coffee-mode-hook '(lambda () (coffee-cos-mode t)))
-(require 'auto-complete)
-(add-to-list 'ac-modes 'coffee-mode)
-
-(defun coffee-custom ()
-  "coffee-mode-hook"
-  (set (make-local-variable 'tab-width) 2)
-  (define-key coffee-mode-map (kbd "C-c c") 'coffee-compile-buffer)
-  )
-
-(add-hook 'coffee-mode-hook 'coffee-custom)
-
-;; Javascript
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(setq js2-basic-offset 2)
-(setq js2-bounce-indent-p t)
-(setq js2-cleanup-whitespace t)
-(setq js2-allow-keywords-as-property-names nil)
-
-(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js" . js2-mode))
-
-;; JSON
-(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
-
-;; tern.js
-(defun my-tern-hook ()
-  "enable tern.js"
-  (tern-mode t))
-;; (add-hook 'js2-mode-hook 'my-tern-hook)
-
-;; CSS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
-(autoload 'css-mode "css-mode" nil t)
-
-(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
-(autoload 'css-mode "css-mode" nil t)
+   ;; Shaders
+   (autoload 'glsl-mode "glsl-mode" nil t)
+   (add-to-list 'auto-mode-alist '("\\.glsl$" . glsl-mode))
+   (add-to-list 'auto-mode-alist '("\\.vert$" . glsl-mode))
+   (add-to-list 'auto-mode-alist '("\\.frag$" . glsl-mode))
+   (add-to-list 'auto-mode-alist '("\\.geom$" . glsl-mode))
 
 
-;; Erlang
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;; Coffeescript
+   (autoload 'coffee-mode "coffee-mode" nil t)
+   (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+   (add-to-list 'auto-mode-alist '("\\.cson$" . coffee-mode))
+   (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+   ;; compile on save
+   (add-hook 'coffee-mode-hook '(lambda () (coffee-cos-mode t)))
+   (require 'auto-complete)
+   (add-to-list 'ac-modes 'coffee-mode)
 
-;; Ubuntu
-;; (setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.6.4/emacs"
-;; 		       load-path))
-;; (setq erlang-root-dir "/usr/local/lib/erlang")
-;; (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
-;; (require 'erlang-start)
+   (defun coffee-custom ()
+     "coffee-mode-hook"
+     (set (make-local-variable 'tab-width) 2)
+     (define-key coffee-mode-map (kbd "C-c c") 'coffee-compile-buffer))
 
+   (add-hook 'coffee-mode-hook 'coffee-custom)
 
-;; Haskell
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;; Javascript
+   (setq js2-basic-offset 2)
+   (setq js2-bounce-indent-p t)
+   (setq js2-cleanup-whitespace t)
+   (setq js2-allow-keywords-as-property-names nil)
 
-(autoload 'haskell-mode "haskell-mode" nil t)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+   (autoload 'js2-mode "js2-mode" nil t)
+   (add-to-list 'auto-mode-alist '("\\.js" . js2-mode))
 
+   ;; JSON
+   (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
-;; Python
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;; tern.js
+   (defun my-tern-hook ()
+     "enable tern.js"
+     (tern-mode t))
+   ;; (add-hook 'js2-mode-hook 'my-tern-hook)
 
-;; Use Python.org's python-mode.el for .py files
-(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-(setq interpreter-mode-alist (cons '("python" . python-mode)
-				   interpreter-mode-alist))
-(autoload 'python-mode "python-mode" "Python editing mode." t)
+   ;; CSS
+   (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+   (autoload 'css-mode "css-mode" nil t)
 
-;; Python highlighting (might not be necessary)
-(global-font-lock-mode t)
-(setq font-lock-maximum-decoration t)
-
-;; Run nosetests from emacs
-(require 'nose)
-;; Use dot output, rather than verbose output:
-(setq nose-use-verbose nil) ;; default is t
-(add-hook 'python-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c a") 'nosetests-all)
-            (local-set-key (kbd "C-c m") 'nosetests-module)
-            (local-set-key (kbd "C-c .") 'nosetests-one)
-            (local-set-key (kbd "C-c p a") 'nosetests-pdb-all)
-            (local-set-key (kbd "C-c p m") 'nosetests-pdb-module)
-            (local-set-key (kbd "C-c p .") 'nosetests-pdb-one)))
-(put 'scroll-left 'disabled nil)
+   (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
+   (autoload 'css-mode "css-mode" nil t)
 
 
-;; Smalltalk
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;; Erlang
 
-(setq auto-mode-alist
-      (append  '(("\\.st\\'" . smalltalk-mode))
-	       auto-mode-alist))
 
-(autoload 'gst-mode "/usr/local/Cellar/gnu-smalltalk/HEAD/share/emacs/site-lisp/gst-mode.elc" "" t)
-(autoload 'smalltalk-mode "/usr/local/Cellar/gnu-smalltalk/HEAD/share/emacs/site-lisp/smalltalk-mode.elc" "" t)
+   ;; Ubuntu
+   ;; (setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.6.4/emacs"
+   ;; 		       load-path))
+   ;; (setq erlang-root-dir "/usr/local/lib/erlang")
+   ;; (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
+   ;; (require 'erlang-start)
 
-;; PHP
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(autoload 'php-mode "php-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.thtml$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl$" . php-mode))
+   ;; Haskell
+   (autoload 'haskell-mode "haskell-mode" nil t)
+   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-;; use tabs
-(add-hook 'php-mode-hook 'php-tabs)
-(defun php-tabs ()
-  "Use tabs in php-mode"
-  (setq indent-tabs-mode t)
-  (let ((my-tab-width 4))
-	(setq tab-width my-tab-width)
-	(setq c-basic-indent my-tab-width)
-	(set (make-local-variable 'tab-stop-list)
-	     (number-sequence my-tab-width 200 my-tab-width))))
+
+   ;; Python
+
+   ;; Use Python.org's python-mode.el for .py files
+   (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+   (setq interpreter-mode-alist (cons '("python" . python-mode)
+				      interpreter-mode-alist))
+   (autoload 'python-mode "python-mode" "Python editing mode." t)
+
+   ;; Python highlighting (might not be necessary)
+   (global-font-lock-mode t)
+   (setq font-lock-maximum-decoration t)
+
+   ;; Run nosetests from emacs
+   (require 'nose)
+
+   ;; Use dot output, rather than verbose output:
+   (setq nose-use-verbose nil) ;; default is t
+   (add-hook 'python-mode-hook
+	     (lambda ()
+	       (local-set-key (kbd "C-c a") 'nosetests-all)
+	       (local-set-key (kbd "C-c m") 'nosetests-module)
+	       (local-set-key (kbd "C-c .") 'nosetests-one)
+	       (local-set-key (kbd "C-c p a") 'nosetests-pdb-all)
+	       (local-set-key (kbd "C-c p m") 'nosetests-pdb-module)
+	       (local-set-key (kbd "C-c p .") 'nosetests-pdb-one)))
+   (put 'scroll-left 'disabled nil)
+
+
+   ;; Rust
+   (setq racer-cmd (expand-file-name "~/.multirust/toolchains/stable/cargo/bin/racer"))
+   (setq racer-rust-src-path (expand-file-name "~/3rd-party-src/rust-1.6.0/src"))
+
+   (add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
+   (add-hook 'rust-mode-hook #'racer-mode)
+   (add-hook 'racer-mode-hook #'eldoc-mode)
+
+   (defun racer-mode-hook-ac () (ac-racer-setup))
+   (add-hook 'racer-mode-hook 'racer-mode-hook-ac)
+
+
+   ;; Smalltalk
+   (setq auto-mode-alist
+	 (append  '(("\\.st\\'" . smalltalk-mode))
+		  auto-mode-alist))
+
+   (autoload 'gst-mode "/usr/local/Cellar/gnu-smalltalk/HEAD/share/emacs/site-lisp/gst-mode.elc" "" t)
+   (autoload 'smalltalk-mode "/usr/local/Cellar/gnu-smalltalk/HEAD/share/emacs/site-lisp/smalltalk-mode.elc" "" t)
+
+   ;; PHP
+   (autoload 'php-mode "php-mode" nil t)
+   (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+   (add-to-list 'auto-mode-alist '("\\.thtml$" . php-mode))
+   (add-to-list 'auto-mode-alist '("\\.tpl$" . php-mode))
+
+   ;; use tabs
+   (add-hook 'php-mode-hook 'php-tabs)
+   (defun php-tabs ()
+     "Use tabs in php-mode"
+     (setq indent-tabs-mode t)
+     (let ((my-tab-width 4))
+       (setq tab-width my-tab-width)
+       (setq c-basic-indent my-tab-width)
+       (set (make-local-variable 'tab-stop-list)
+	    (number-sequence my-tab-width 200 my-tab-width))))))
+
+;; Note: use list-faces-display
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
