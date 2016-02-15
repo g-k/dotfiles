@@ -553,7 +553,7 @@
 
    ;; Rust
    (setq racer-cmd (expand-file-name "~/.multirust/toolchains/stable/cargo/bin/racer"))
-   (setq racer-rust-src-path (expand-file-name "~/3rd-party-src/rust-1.6.0/src"))
+   (setq racer-rust-src-path (expand-file-name "~/3rd-party-src/rustc-1.6.0/src"))
 
    (add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
    (add-hook 'rust-mode-hook #'racer-mode)
