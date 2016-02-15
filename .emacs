@@ -435,6 +435,9 @@
 
    (require 'magit)
 
+   (require 'undo-tree)
+   (global-undo-tree-mode)
+
    ;; AutoComplete.el
    (require 'auto-complete-config)
    ;; (add-to-list 'ac-dictionary-directories "/Users/gregg/.emacs.d/ac-dict")
