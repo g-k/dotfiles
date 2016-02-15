@@ -438,6 +438,9 @@
    (require 'undo-tree)
    (global-undo-tree-mode)
 
+   ;; Sublime style minimap
+   (require 'minimap)
+
    ;; AutoComplete.el
    (require 'auto-complete-config)
    ;; (add-to-list 'ac-dictionary-directories "/Users/gregg/.emacs.d/ac-dict")
