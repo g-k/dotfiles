@@ -182,7 +182,7 @@
 ;; (setq ns-function-modifier 'hyper)
 
 ;; Sublime style minimap
-(require 'minimap)
+; (require 'minimap)
 
 
 ;; Effective Emacs Item 2: Invoke M-x without the Alt key
