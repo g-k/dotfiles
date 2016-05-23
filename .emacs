@@ -133,6 +133,7 @@
 ;; (slime-setup)
 
 ;; IRC
+(setq rcirc-default-nick "g-k")
 (setq rcirc-server-alist
       '(("irc.mozilla.org" :port 6697 :encryption tls
 	 :channels ("#servo"))
