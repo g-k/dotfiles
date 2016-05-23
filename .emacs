@@ -572,6 +572,7 @@
 
    (add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
    (add-hook 'rust-mode-hook #'racer-mode)
+   (add-hook 'rust-mode-hook 'cargo-minor-mode)
    (add-hook 'racer-mode-hook #'eldoc-mode)
 
    (defun racer-mode-hook-ac () (ac-racer-setup))
