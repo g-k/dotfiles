@@ -362,11 +362,6 @@
   (require 'git)
   (require 'git-blame))
 
-(require 'magit)
-
-(require 'editorconfig)
-(editorconfig-mode 1)
-
 ;; Reset buffers if the files change on disk
 (global-auto-revert-mode t)
 
@@ -445,6 +440,9 @@
    (package-initialize)
 
    (require 'magit)
+
+   (require 'editorconfig)
+   (editorconfig-mode 1)
 
    (require 'undo-tree)
    (global-undo-tree-mode)
