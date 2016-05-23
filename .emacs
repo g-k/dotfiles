@@ -578,6 +578,15 @@
    (defun racer-mode-hook-ac () (ac-racer-setup))
    (add-hook 'racer-mode-hook 'racer-mode-hook-ac)
 
+   (defun indent-buffer ()
+     "Indent current buffer according to major mode."
+     (interactive)
+       (indent-region (point-min) (point-max)))
+
+   (defun rustfmt-buffer () (local-set-key (kbd "C-c <tab>") #'rust-format-buffer))
+   (add-hook 'rust-mode-hook 'rustfmt-buffer)
+
+   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
    ;; Smalltalk
    (setq auto-mode-alist
