@@ -95,6 +95,14 @@ function cuda; {
     export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.0/lib:$DYLD_LIBRARY_PATH
 }
 
+function burp; {
+    java -jar -Xmx1024m ~/Downloads/burpsuite_free_v1.6.jar
+}
+
+function stash-and-update-master; {
+    git stash && git checkout master && git pull && git checkout - && git rebase master && git stash pop
+}
+
 source $HOME/.cargo/env
 
 
