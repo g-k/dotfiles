@@ -110,3 +110,4 @@ echo 'nautilus ~/Dropbox/read'
 echo 'run: emacs -nw ~/Dropbox/TODO.org'
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
+source /usr/local/bin/virtualenvwrapper.sh
