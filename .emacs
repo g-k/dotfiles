@@ -620,16 +620,19 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-agenda-files (quote ("~/paint-by-words/TODO.org" "~/org/Work.org" "~/org/Home.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "red"))))
  '(diff-changed ((t (:foreground "blue"))))
- '(highlight ((t (:background "black" :foreground "black"))))
+ '(git-blame-prefix-face ((t (:background "white" :foreground "brightwhite"))))
+ '(highlight ((t (:background "brightcyan"))))
  '(secondary-selection ((t nil)))
  '(whitespace-indentation ((t (:foreground "firebrick"))))
  '(whitespace-line ((t (:foreground "white"))))
  '(whitespace-space ((t (:foreground "lightgray"))))
  '(whitespace-tab ((t (:foreground "lightgray")))))
+(put 'upcase-region 'disabled nil)
