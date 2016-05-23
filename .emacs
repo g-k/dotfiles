@@ -1,11 +1,8 @@
-;; http://www.idryman.org/blog/2013/03/23/installing-swank-dot-js/
-;; (add-to-list 'load-path "~/.emacs.d/slime")
-;; (setq inferior-lisp-program "/usr/local/bin/sbcl")
-;; (require 'slime)
-;; (slime-setup)
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (require 'package)
+(setq package-enable-at-startup nil)
+
 ;; Add the original Emacs Lisp Package Archive
 (add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/"))
@@ -181,17 +178,10 @@
 (require 'tramp)
 (setq password-cache-expiry nil)
 
-(require 'undo-tree)
-(global-undo-tree-mode)
-
 ;; http://whattheemacsd.com/mac.el-01.html
 ;; (setq mac-command-modifier 'meta)
 ;; (setq mac-option-modifier 'super)
 ;; (setq ns-function-modifier 'hyper)
-
-;; Sublime style minimap
-; (require 'minimap)
-
 
 ;; Effective Emacs Item 2: Invoke M-x without the Alt key
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
@@ -253,24 +243,24 @@
   (kbd "M-.") 'find-function-at-point)
 
 ;; Highlight the current line (so I can find it on a big monitor w/ many buffers)
-(global-hl-line-mode t)
+;; (global-hl-line-mode t)
 ;;
 (column-number-mode 1)
 
 ;; OSX copy paste
 ;; from: http://www.lingotrek.com/2010/12/integrate-emacs-with-mac-os-x-clipboard.html
-(defun mac-copy ()
-  (shell-command-to-string "pbpaste"))
+;; (defun mac-copy ()
+;;   (shell-command-to-string "pbpaste"))
 
-(defun mac-paste (text &optional push)
-  (let ((process-connection-type nil))
-    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-      (process-send-string proc text)
-      (process-send-eof proc))))
+;; (defun mac-paste (text &optional push)
+;;   (let ((process-connection-type nil))
+;;     (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+;;       (process-send-string proc text)
+;;       (process-send-eof proc))))
 
-(when (equal system-type 'darwin)
-  (setq interprogram-cut-function 'mac-paste)
-  (setq interprogram-paste-function 'mac-copy))
+;; (when (equal system-type 'darwin)
+;;   (setq interprogram-cut-function 'mac-paste)
+;;   (setq interprogram-paste-function 'mac-copy))
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Clipboard.html
 (setq x-select-enable-clipboard t)
@@ -336,9 +326,9 @@
 
 
 ;; Use handlebars templates
-(autoload 'handlebars-mode "handlebars-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.handlebars$" . handlebars-mode))
-(add-to-list 'auto-mode-alist '("\\.hbs$" . handlebars-mode))
+;; (autoload 'handlebars-mode "handlebars-mode" nil t)
+;; (add-to-list 'auto-mode-alist '("\\.handlebars$" . handlebars-mode))
+;; (add-to-list 'auto-mode-alist '("\\.hbs$" . handlebars-mode))
 
 ;; Markdown mode for .md and .markdown files
 (autoload 'markdown-mode "markdown-mode" nil t)
@@ -570,7 +560,7 @@
    (setq racer-cmd (expand-file-name "~/.cargo/bin/racer"))
    (setq racer-rust-src-path (expand-file-name "~/rust/src"))
 
-   (add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
+   ;; (add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
    (add-hook 'rust-mode-hook #'racer-mode)
    (add-hook 'rust-mode-hook 'cargo-minor-mode)
    (add-hook 'racer-mode-hook #'eldoc-mode)
