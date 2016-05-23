@@ -26,14 +26,20 @@
 	  (auto-complete . "melpa-stable")
 	  (browse-kill-ring . "melpa-stable")
 	  (buffer-move . "melpa-stable")
+	  (cargo . "melpa-stable")
 	  (cider . "melpa-stable")
 	  (clojure-mode . "melpa-stable")
 	  (clojurescript-mode . "melpa-stable")
 	  (coffee-mode . "melpa-stable")
 	  (dash . "melpa-stable")
 	  (discover . "melpa-stable")
+	  (elfeed . "melpa-stable")
+	  (elfeed-org . "melpa")
 	  (flx . "melpa-stable")
 	  (flx-ido . "melpa-stable")
+	  (flycheck . "melpa")
+	  (flycheck-rust . "melpa")
+	  (flycheck-pyflakes . "melpa")
 	  ;; (glsl-mode . "melpa-stable")
 	  (guide-key . "melpa-stable")
 	  ;; (handlebars-mode . "melpa-stable")
@@ -45,7 +51,7 @@
 	  (less-css-mode . "melpa-stable")
 	  (magit . "melpa-stable")
 	  (markdown-mode . "melpa-stable")
-	  ;; (minimap . "melpa-stable") ;; replaed with sublimitity?
+	  (minimap . "melpa-stable") ;; replace with sublimitity?
 	  (multiple-cursors . "melpa-stable")
 	  (nose . "melpa-stable")
 	  (paredit . "melpa-stable")
@@ -58,11 +64,12 @@
 	  (python-pep8 . "melpa-stable")
 	  (python-pylint . "melpa-stable")
 	  (racer . "melpa-stable")
+	  (rust-mode . "melpa")
 	  (rainbow-delimiters . "melpa-stable")
-	  ;; (undo-tree . "melpa-stable")
+	  (undo-tree . "melpa-stable")
 	  (web-mode . "melpa-stable")
 	  (yasnippet . "melpa-stable")
-	  (yasnippet-bundle . "melpa-stable")
+	  ;; (yasnippet-bundle . "melpa-stable")
 	  )))
 
 (package-initialize t)
@@ -89,7 +96,7 @@
 			      discover
 			      flx
 			      flx-ido
-			      ;; glsl-mode
+			      glsl-mode
 			      guide-key
 			      ;; handlebars-mode
 			      helm
@@ -100,7 +107,7 @@
 			      less-css-mode
 			      magit
 			      markdown-mode
-			      ;; minimap
+			      minimap
 			      multiple-cursors
 			      nose
 			      paredit
@@ -113,10 +120,11 @@
 			      python-pep8
 			      python-pylint
 			      rainbow-delimiters
-			      ;; undo-tree
+			      undo-tree
 			      web-mode
 			      yasnippet
-			      yasnippet-bundle))
+			      ;; yasnippet-bundle
+			      ))
 
 ;; (install-required-packages required-package-list)
 
