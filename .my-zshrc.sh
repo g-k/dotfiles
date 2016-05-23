@@ -43,6 +43,7 @@ export SVN_EDITOR=$EDITOR
 # aliases
 alias gst="git status"
 alias rm="nocorrect rm"
+alias vlc=/Applications/VLC.app/Contents/MacOS/VLC
 
 alias emacsd="emacs --daemon"
 alias emacsc="emacsclient -t"
