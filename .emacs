@@ -30,6 +30,7 @@
 	  (coffee-mode . "melpa-stable")
 	  (dash . "melpa-stable")
 	  (discover . "melpa-stable")
+	  (editorconfig . "melpa-stable")
 	  (elfeed . "melpa-stable")
 	  (elfeed-org . "melpa")
 	  (flx . "melpa-stable")
@@ -41,14 +42,14 @@
 	  (guide-key . "melpa-stable")
 	  ;; (handlebars-mode . "melpa-stable")
 	  (helm . "melpa-stable")
-	  (helm-projectile . "melpa-stable")
+	  ;; (helm-projectile . "melpa-stable")
 	  (ido . "melpa-stable")
 	  (js2-mode . "melpa-stable")
 	  (json-mode . "melpa-stable")
 	  (less-css-mode . "melpa-stable")
 	  (magit . "melpa-stable")
 	  (markdown-mode . "melpa-stable")
-	  (minimap . "melpa-stable") ;; replace with sublimitity?
+	  ;; (minimap . "melpa-stable") ;; replace with sublimitity?
 	  (multiple-cursors . "melpa-stable")
 	  (nose . "melpa-stable")
 	  (paredit . "melpa-stable")
@@ -57,13 +58,10 @@
 	  (popup . "melpa-stable")
 	  (projectile . "melpa-stable")
 	  (puppet-mode . "melpa-stable")
-	  (python-mode . "melpa-stable")
-	  (python-pep8 . "melpa-stable")
-	  (python-pylint . "melpa-stable")
 	  (racer . "melpa-stable")
 	  (rust-mode . "melpa")
 	  (rainbow-delimiters . "melpa-stable")
-	  (undo-tree . "melpa-stable")
+	  ;; (undo-tree . "melpa-stable")
 	  (web-mode . "melpa-stable")
 	  (yasnippet . "melpa-stable")
 	  ;; (yasnippet-bundle . "melpa-stable")
@@ -87,24 +85,22 @@
 			      buffer-move
 			      cider
 			      clojure-mode
-			      clojurescript-mode
 			      coffee-mode
 			      dash
 			      discover
+			      editorconfig
 			      flx
 			      flx-ido
 			      glsl-mode
 			      guide-key
 			      ;; handlebars-mode
 			      helm
-			      helm-projectile
 			      ido
 			      js2-mode
 			      json-mode
 			      less-css-mode
 			      magit
 			      markdown-mode
-			      minimap
 			      multiple-cursors
 			      nose
 			      paredit
@@ -113,11 +109,8 @@
 			      popup
 			      projectile
 			      puppet-mode
-			      python-mode
-			      python-pep8
-			      python-pylint
 			      rainbow-delimiters
-			      undo-tree
+			      ;; undo-tree
 			      web-mode
 			      yasnippet
 			      ;; yasnippet-bundle
@@ -435,11 +428,11 @@
    (require 'editorconfig)
    (editorconfig-mode 1)
 
-   (require 'undo-tree)
-   (global-undo-tree-mode)
+   ;; (require 'undo-tree)
+   ;; (global-undo-tree-mode)
 
    ;; Sublime style minimap
-   (require 'minimap)
+   ;; (require 'minimap)
 
    ;; AutoComplete.el
    (require 'auto-complete-config)

@@ -1,4 +1,5 @@
-which prompt &> /dev/null && prompt off
+which prompt &> /dev/null && prompt minimal
+
 
 if [[ -r /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
@@ -51,7 +52,7 @@ alias emacsc="emacsclient -t"
 
 function start-ssh-agent; {
     eval "$(ssh-agent)"
-    ssh-add ~/.ssh/id_rsa
+    ssh-add ~/.ssh/id_ed25519
 }
 
 function kill-ssh-agent; {
