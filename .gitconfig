@@ -20,3 +20,5 @@
 	browser = github
 [rerere]
 	enabled = true
+[default]
+	branch = current
