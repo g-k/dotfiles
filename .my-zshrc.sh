@@ -49,10 +49,17 @@ alias vlc=/Applications/VLC.app/Contents/MacOS/VLC
 alias emacsd="emacs --daemon"
 alias emacsc="emacsclient -t"
 
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
 function start-ssh-agent; {
     eval "$(ssh-agent)"
+    ssh-add -l
+}
+
+function add-ssh-key; {
     ssh-add ~/.ssh/id_ed25519
+    ssh-add -l
 }
 
 function kill-ssh-agent; {

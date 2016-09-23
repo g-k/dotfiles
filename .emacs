@@ -171,6 +171,7 @@
 ;; remote editing
 (require 'tramp)
 (setq password-cache-expiry nil)
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))  ;; fix projectile in tramp
 
 ;; http://whattheemacsd.com/mac.el-01.html
 ;; (setq mac-command-modifier 'meta)
