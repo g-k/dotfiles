@@ -22,3 +22,5 @@
 	enabled = true
 [default]
 	branch = current
+[commit]
+	gpgsign = true
