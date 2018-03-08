@@ -49,6 +49,8 @@ alias vlc=/Applications/VLC.app/Contents/MacOS/VLC
 alias emacsd="emacs --daemon"
 alias emacsc="emacsclient -t"
 
+alias urldecode='python -c "import sys, urllib as ul; \
+    print ul.unquote_plus(sys.argv[1])"'
 
 function start-ssh-agent; {
     eval "$(ssh-agent)"
