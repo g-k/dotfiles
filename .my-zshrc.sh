@@ -101,6 +101,7 @@ function stash-and-update-master; {
 }
 
 source $HOME/.cargo/env
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 
 echo 'nautilus ~/Dropbox/read'
