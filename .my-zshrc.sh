@@ -11,7 +11,7 @@ fi
 
 # set PATH
 CABAL="$HOME/.cabal/bin"
-PATH="$HOME/bin:$CABAL:$PATH"
+PATH="$HOME/bin:$CABAL:$PATH:$HOME/bin/FlameGraph"
 
 if [[ `uname` = "Darwin" ]]; then
     HOMEBREW="/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/local/lib:/usr/local/lib/python2.7/site-packages"
