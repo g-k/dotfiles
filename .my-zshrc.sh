@@ -116,4 +116,5 @@ echo 'run: emacs -nw ~/Dropbox/TODO.org'
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
 export LEIN_FAST_TRAMPOLINE=y
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
