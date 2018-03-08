@@ -109,6 +109,7 @@ function dump-memcached; {
 source $HOME/.cargo/env
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
+eval "$(pyenv init -)"
 
 echo 'nautilus ~/Dropbox/read'
 echo 'run: emacs -nw ~/Dropbox/TODO.org'
