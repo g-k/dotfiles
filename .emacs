@@ -17,6 +17,16 @@
 (add-to-list 'package-archives
              '("tromey" . "https://tromey.com/elpa/"))
 
+;; https://endlessparentheses.com/new-in-emacs-25-1-archive-priorities-and-downgrading-packages.html
+;; Higher values are searched first.
+(setq package-archive-priorities
+      '(
+	("org"          . 200)
+        ("melpa-stable" . 150)
+        ("melpa"        . 100)
+        ;; ("marmalade"    .  75)
+        ("gnu"          .  50)
+	("tromey"       .  25)))
 
 (package-initialize t)
 
