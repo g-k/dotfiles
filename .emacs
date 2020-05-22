@@ -38,42 +38,29 @@
 	package-list))
 
 
-(setq required-package-list '(ac-cider
-			      ace-jump-mode
+(setq required-package-list '(ace-jump-mode
 			      auto-complete
 			      browse-kill-ring
 			      buffer-move
-			      cider
-			      clojure-mode
-			      coffee-mode
-			      dash
 			      discover
 			      editorconfig
-			      flx
-			      flx-ido
-			      glsl-mode
 			      guide-key
-			      ;; handlebars-mode
 			      helm
+			      helm-projectile
 			      ido
 			      js2-mode
 			      json-mode
-			      less-css-mode
+			      lsp-mode
 			      magit
-			      markdown-mode
 			      multiple-cursors
-			      nose
 			      paredit
-			      ;; paredit-menu
-			      php-mode
+			      paredit-menu
 			      popup
 			      projectile
-			      puppet-mode
 			      rainbow-delimiters
-			      ;; undo-tree
+			      undo-tree
 			      web-mode
 			      yasnippet
-			      ;; yasnippet-bundle
 			      ))
 
 ;; (install-required-packages required-package-list)
