@@ -3,17 +3,19 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 
-;; Add the original Emacs Lisp Package Archive
+;; Emacs Lisp Package Archives
 (add-to-list 'package-archives
-             '("tromey" . "http://tromey.com/elpa/"))
+	     '("org" . "https://orgmode.org/elpa/"))
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/"))
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/"))
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-	     '("gnu" . "http://elpa.gnu.org/packages/"))
+	     '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("tromey" . "https://tromey.com/elpa/"))
 
 
 (package-initialize t)
