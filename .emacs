@@ -52,6 +52,7 @@
 			      json-mode
 			      lsp-mode
 			      magit
+			      markdown-mode
 			      multiple-cursors
 			      paredit
 			      paredit-menu
