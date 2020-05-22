@@ -31,12 +31,11 @@
 (package-initialize t)
 
 (defun install-required-packages (package-list)
-  (when (>= emacs-major-version 24)
-    (package-refresh-contents)
-    (mapc (lambda (package)
-	    (or (package-installed-p package)
-		(package-install package)))
-	  package-list)))
+  (package-refresh-contents)
+  (mapc (lambda (package)
+	  (or (package-installed-p package)
+	      (package-install package)))
+	package-list))
 
 
 (setq required-package-list '(ac-cider
