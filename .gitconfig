@@ -27,3 +27,5 @@
 	maxStack = 50
 [alias]
 	absorb = git-absorb
+[init]
+	defaultBranch = main
