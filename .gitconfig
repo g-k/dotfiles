@@ -24,3 +24,7 @@
 	branch = current
 [grep]
 	lineNumber = true
+[absorb]
+	maxStack = 50
+[alias]
+	absorb = git-absorb
