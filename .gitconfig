@@ -10,7 +10,6 @@
 	diff = auto
 	status = auto
 	branch = auto
-[core]
 [push]
 	default = current
 [core]
