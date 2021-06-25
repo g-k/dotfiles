@@ -194,27 +194,7 @@
    (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
    (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-   ;; clojure
-   (require 'cider)
-
-   (add-hook 'clojure-mode-hook 'paredit-mode)
-   ;; (add-hook 'clojure-mode-hook 'eldoc-mode)
-   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-
-   ;; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-   (add-hook 'cider-repl-mode-hook 'paredit-mode)
-
-   (setq nrepl-buffer-name-show-port t)
-   (setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
-   (setq cider-repl-history-size 1000) ; the default is 500
-   (setq ac-delay 0.0)
-   (setq ac-quick-help-delay 0.5)
-
-   (require 'ac-cider)
-   (add-hook 'cider-mode-hook 'ac-cider-setup)
-   (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-   (add-to-list 'ac-modes 'cider-mode)
-   (add-to-list 'ac-modes 'cider-repl-mode)))
+   ))
 
 ;; Use puppet for *.pp files
 (autoload 'puppet-mode "puppet-mode" nil t)
@@ -236,20 +216,11 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile.lock$" . ruby-mode))
 
-
-;; Use octave-mode for .m files (for ml class)
-(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
-
 ;; Use diff-mode for git commit messages
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
 
 ;; Reset buffers if the files change on disk
 (global-auto-revert-mode t)
-
-;; Also auto refresh dired, but be quiet about it
-;; http://whattheemacsd.com/sane-defaults.el-01.html
-;; (setq global-auto-revert-non-file-buffers t) ;; flashing cursor to command area
-;; (setq auto-revert-verbose nil)
 
 ;; Don't pass --dired to ls and fail to parse weird filenames
 (setq dired-use-ls-dired nil)
@@ -351,31 +322,6 @@
 				      (statement-cont . +)))))
    (put 'downcase-region 'disabled nil)
 
-   ;; Shaders
-   (autoload 'glsl-mode "glsl-mode" nil t)
-   (add-to-list 'auto-mode-alist '("\\.glsl$" . glsl-mode))
-   (add-to-list 'auto-mode-alist '("\\.vert$" . glsl-mode))
-   (add-to-list 'auto-mode-alist '("\\.frag$" . glsl-mode))
-   (add-to-list 'auto-mode-alist '("\\.geom$" . glsl-mode))
-
-
-   ;; Coffeescript
-   (autoload 'coffee-mode "coffee-mode" nil t)
-   (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-   (add-to-list 'auto-mode-alist '("\\.cson$" . coffee-mode))
-   (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
-   ;; compile on save
-   (add-hook 'coffee-mode-hook '(lambda () (coffee-cos-mode t)))
-   (require 'auto-complete)
-   (add-to-list 'ac-modes 'coffee-mode)
-
-   (defun coffee-custom ()
-     "coffee-mode-hook"
-     (set (make-local-variable 'tab-width) 2)
-     (define-key coffee-mode-map (kbd "C-c c") 'coffee-compile-buffer))
-
-   (add-hook 'coffee-mode-hook 'coffee-custom)
-
    ;; Javascript
    (setq js2-basic-offset 2)
    (setq js2-bounce-indent-p t)
@@ -388,36 +334,12 @@
    ;; JSON
    (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
-   ;; tern.js
-   (defun my-tern-hook ()
-     "enable tern.js"
-     (tern-mode t))
-   ;; (add-hook 'js2-mode-hook 'my-tern-hook)
-
    ;; CSS
    (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
    (autoload 'css-mode "css-mode" nil t)
 
    (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
    (autoload 'css-mode "css-mode" nil t)
-
-
-   ;; Erlang
-
-
-   ;; Ubuntu
-   ;; (setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.6.4/emacs"
-   ;; 		       load-path))
-   ;; (setq erlang-root-dir "/usr/local/lib/erlang")
-   ;; (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
-   ;; (require 'erlang-start)
-
-
-   ;; Haskell
-   (autoload 'haskell-mode "haskell-mode" nil t)
-   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
 
    ;; Python
 
@@ -430,19 +352,6 @@
    ;; Python highlighting (might not be necessary)
    (global-font-lock-mode t)
    (setq font-lock-maximum-decoration t)
-
-   ;; Use dot output, rather than verbose output:
-   (setq nose-use-verbose nil) ;; default is t
-   (add-hook 'python-mode-hook
-	     (lambda ()
-	       (local-set-key (kbd "C-c a") 'nosetests-all)
-	       (local-set-key (kbd "C-c m") 'nosetests-module)
-	       (local-set-key (kbd "C-c .") 'nosetests-one)
-	       (local-set-key (kbd "C-c p a") 'nosetests-pdb-all)
-	       (local-set-key (kbd "C-c p m") 'nosetests-pdb-module)
-	       (local-set-key (kbd "C-c p .") 'nosetests-pdb-one)))
-   (put 'scroll-left 'disabled nil)
-
 
    ;; Rust
    (setq racer-cmd (expand-file-name "~/.cargo/bin/racer"))
@@ -466,30 +375,13 @@
 
    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
-   ;; Smalltalk
-   (setq auto-mode-alist
-	 (append  '(("\\.st\\'" . smalltalk-mode))
-		  auto-mode-alist))
-
-   (autoload 'gst-mode "/usr/local/Cellar/gnu-smalltalk/HEAD/share/emacs/site-lisp/gst-mode.elc" "" t)
-   (autoload 'smalltalk-mode "/usr/local/Cellar/gnu-smalltalk/HEAD/share/emacs/site-lisp/smalltalk-mode.elc" "" t)
-
    ;; PHP
    (autoload 'php-mode "php-mode" nil t)
    (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
    (add-to-list 'auto-mode-alist '("\\.thtml$" . php-mode))
    (add-to-list 'auto-mode-alist '("\\.tpl$" . php-mode))
 
-   ;; use tabs
-   (add-hook 'php-mode-hook 'php-tabs)
-   (defun php-tabs ()
-     "Use tabs in php-mode"
-     (setq indent-tabs-mode t)
-     (let ((my-tab-width 4))
-       (setq tab-width my-tab-width)
-       (setq c-basic-indent my-tab-width)
-       (set (make-local-variable 'tab-stop-list)
-	    (number-sequence my-tab-width 200 my-tab-width))))))
+   ))
 
 ;; Note: use list-faces-display
 
@@ -521,4 +413,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (eglot groovy-mode typescript-mode company-go web-mode rainbow-delimiters paredit-menu json-mode js2-mode discover buffer-move auto-complete undo-tree editorconfig magit company company-jedi company-shell rust-mode go-mode projectile-ripgrep yaml-mode markdown-mode helm-projectile helm guide-key multiple-cursors yasnippet dockerfile-mode browse-kill-ring ace-jump-mode ac-cider))))
+    (eglot groovy-mode typescript-mode company-go web-mode rainbow-delimiters paredit-menu json-mode js2-mode discover buffer-move auto-complete undo-tree editorconfig magit company company-jedi company-shell rust-mode go-mode projectile-ripgrep yaml-mode markdown-mode helm-projectile helm guide-key multiple-cursors yasnippet dockerfile-mode browse-kill-ring ace-jump-mode))))
