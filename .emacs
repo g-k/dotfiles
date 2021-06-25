@@ -30,41 +30,9 @@
 
 (package-initialize t)
 
-(defun install-required-packages (package-list)
+(defun install-selected-packages ()
   (package-refresh-contents)
-  (mapc (lambda (package)
-	  (or (package-installed-p package)
-	      (package-install package)))
-	package-list))
-
-
-(setq required-package-list '(ace-jump-mode
-			      auto-complete
-			      browse-kill-ring
-			      buffer-move
-			      discover
-			      editorconfig
-			      guide-key
-			      helm
-			      helm-projectile
-			      ido
-			      js2-mode
-			      json-mode
-			      lsp-mode
-			      magit
-			      markdown-mode
-			      multiple-cursors
-			      paredit
-			      paredit-menu
-			      popup
-			      projectile
-			      rainbow-delimiters
-			      undo-tree
-			      web-mode
-			      yasnippet
-			      ))
-
-;; (install-required-packages required-package-list)
+  (package-install-selected-packages))
 
 
 ;; http://www.idryman.org/blog/2013/03/23/installing-swank-dot-js/
@@ -80,6 +48,8 @@
 	 :channels ("#servo"))
 	("irc.freenode.net" :port 6697 :encryption tls
 	 :channels ())))
+;; uncomment and eval on a new machine to install selected packages
+;; (install-selected-packages)
 
 ;; search
 (add-hook 'after-init-hook #'projectile-global-mode) ;; to enable in all buffers
@@ -568,3 +538,11 @@
  '(whitespace-space ((t (:foreground "lightgray"))))
  '(whitespace-tab ((t (:foreground "lightgray")))))
 (put 'upcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (eglot groovy-mode typescript-mode company-go web-mode rainbow-delimiters paredit-menu json-mode js2-mode discover buffer-move auto-complete undo-tree editorconfig magit company company-jedi company-shell rust-mode go-mode projectile-ripgrep yaml-mode markdown-mode helm-projectile helm guide-key multiple-cursors yasnippet dockerfile-mode browse-kill-ring ace-jump-mode ac-cider))))
