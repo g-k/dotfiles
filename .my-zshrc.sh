@@ -108,3 +108,22 @@ eval "$(pyenv init -)"
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+
+## zsh completions
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+source ~/.npm.zsh   # npm
+# source <(kubectl completion zsh)
+# source <(minikube completion zsh)
+# ~/.zfunc/_poetry
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
