@@ -1,23 +1,15 @@
 eval "$(starship init zsh)"
 
 # set PATH
-CABAL="$HOME/.cabal/bin"
-PATH="$HOME/bin:$CABAL:$PATH:$HOME/bin/FlameGraph"
-
-if [[ `uname` = "Darwin" ]]; then
-    HOMEBREW="/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/local/lib:/usr/local/lib/python2.7/site-packages"
-    CUDA_BIN="/Developer/NVIDIA/CUDA-5.0/bin"
-    PATH="$CUDA_BIN:$HOMEBREW:$PATH"
-    alias firefox=/Applications/Firefox.app/Contents/MacOS/firefox-bin
-fi
+PATH="$HOME/bin:$PATH"
 export PATH
 
-export PYTHONSTARTUP="$HOME/.pythonrc"
-
-# load powerline shell
-if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+if [[ `uname` = "Darwin" ]]; then
+    alias firefox=/Applications/Firefox.app/Contents/MacOS/firefox-bin
+    alias vlc=/Applications/VLC.app/Contents/MacOS/VLC
 fi
+
+export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # zsh completions
 source ~/.npm.zsh   # npm
@@ -31,13 +23,10 @@ unsetopt correct_all
 
 # programs
 export EDITOR="emacs -nw"                # default editor
-export SVN_EDITOR=$EDITOR
 
 # aliases
 alias gst="git status"
 alias rm="nocorrect rm"
-alias vlc=/Applications/VLC.app/Contents/MacOS/VLC
-
 alias emacsd="emacs --daemon"
 alias emacsc="emacsclient -t"
 
@@ -68,27 +57,6 @@ function google; {
 
 # Make directory and change to it
 mdc() { mkdir -p "$1" && cd "$1" }
-
-# http://stackoverflow.com/questions/1554278/temporarily-put-away-uncommited-changes-in-subversion-a-la-git-stash
-
-# fix for emscripten: http://permalink.gmane.org/gmane.comp.compilers.emscripten/1219
-LLVM_ADD_VERSION=3.2
-
-function svnstash; {
-    svn diff > "$1".patch;
-}
-
-function svnapply; {
-    patch -p0 < "$1"
-}
-
-function svnpop; {
-    patch -p0 < "$1" && rm "$1"
-}
-
-function cuda; {
-    export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.0/lib:$DYLD_LIBRARY_PATH
-}
 
 function stash-and-update-master; {
     git stash && git checkout master && git pull && git checkout - && git rebase master && git stash pop
