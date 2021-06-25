@@ -8,6 +8,7 @@ if [[ `uname` = "Darwin" ]]; then
     HOMEBREW="/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/local/lib:/usr/local/lib/python2.7/site-packages"
     CUDA_BIN="/Developer/NVIDIA/CUDA-5.0/bin"
     PATH="$CUDA_BIN:$HOMEBREW:$PATH"
+    alias firefox=/Applications/Firefox.app/Contents/MacOS/firefox-bin
 fi
 export PATH
 
