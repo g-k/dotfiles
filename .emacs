@@ -34,20 +34,6 @@
   (package-refresh-contents)
   (package-install-selected-packages))
 
-
-;; http://www.idryman.org/blog/2013/03/23/installing-swank-dot-js/
-;; (add-to-list 'load-path "~/.emacs.d/slime")
-;; (setq inferior-lisp-program "/usr/local/bin/sbcl")
-;; (require 'slime)
-;; (slime-setup)
-
-;; IRC
-(setq rcirc-default-nick "g-k")
-(setq rcirc-server-alist
-      '(("irc.mozilla.org" :port 6697 :encryption tls
-	 :channels ("#servo"))
-	("irc.freenode.net" :port 6697 :encryption tls
-	 :channels ())))
 ;; uncomment and eval on a new machine to install selected packages
 ;; (install-selected-packages)
 
@@ -75,8 +61,6 @@
 	    (require 'yasnippet)
 	    (yas/global-mode 1) ;; Use yasnippet everywhere
 	    (ido-mode 1) ;; Use ido-mode everywhere (find files and dirs)
-	    (flx-ido-mode 1)
-	    (setq ido-use-faces nil) ;; disable ido faces to see flx highlights
 	    ))
 
 ;; Use delete to delete char to left and not current cursor char
@@ -258,11 +242,6 @@
 
 ;; Use diff-mode for git commit messages
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
-
-;; Git installed with emacs on Ubuntu
-(when (equal system-type 'darwin)
-  (require 'git)
-  (require 'git-blame))
 
 ;; Reset buffers if the files change on disk
 (global-auto-revert-mode t)
@@ -451,9 +430,6 @@
    ;; Python highlighting (might not be necessary)
    (global-font-lock-mode t)
    (setq font-lock-maximum-decoration t)
-
-   ;; Run nosetests from emacs
-   (require 'nose)
 
    ;; Use dot output, rather than verbose output:
    (setq nose-use-verbose nil) ;; default is t
