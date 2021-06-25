@@ -139,7 +139,7 @@
   (kbd "M-.") 'find-function-at-point)
 
 ;; Highlight the current line (so I can find it on a big monitor w/ many buffers)
-;; (global-hl-line-mode t)
+(global-hl-line-mode t)
 ;;
 (column-number-mode 1)
 
@@ -296,8 +296,8 @@
    (require 'editorconfig)
    (editorconfig-mode 1)
 
-   ;; (require 'undo-tree)
-   ;; (global-undo-tree-mode)
+   (require 'undo-tree)
+   (global-undo-tree-mode)
 
    ;; Sublime style minimap
    ;; (require 'minimap)
