@@ -14,7 +14,7 @@
 	default = current
 [core]
 	editor = emacsclient
-	excludesfile = /home/greg/.gitignore_global
+	excludesfile = /Users/gguthe/.gitignore_global
 [link]
 	browser = github
 [rerere]

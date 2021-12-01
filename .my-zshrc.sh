@@ -91,7 +91,11 @@ source ~/.npm.zsh   # npm
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
+  # use go1.16
+  export PATH="/opt/homebrew/opt/go@1.16/bin:$PATH"
   autoload -Uz compinit
   compinit
 fi
+
+export AWS_VAULT_BACKEND=pass
+export AWS_VAULT_PASS_PREFIX=aws-vault/
