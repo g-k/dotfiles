@@ -29,3 +29,6 @@
 	absorb = git-absorb
 [init]
 	defaultBranch = main
+[rebase]
+	autostash = true # stash/unstash WIP
+	autosquash = true # auto-squash fixup commits
